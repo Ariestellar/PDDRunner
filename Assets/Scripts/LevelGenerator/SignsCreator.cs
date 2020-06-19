@@ -16,9 +16,14 @@ public class SignsCreator : MonoBehaviour
     [SerializeField] private Sprite _signLabelMinorWayLeftTurn;
     [SerializeField] private Sprite _signLabelMinorWayRightTurn;
 
+    [SerializeField] private List<SignPriorityWay> _possibleRoadSign;
+
+    [SerializeField] private List<SignPriorityWay> _arrangementSignsVariantWhereMainWayStraight;
+    [SerializeField] private List<SignPriorityWay> _arrangementSignsVariantWhereMainWayCurve;
+
     public List<SignPriorityWay> Create(List<Transform> positionSigns)
     {
-        List<SignPriorityWay> signPriorityWay = GeneratePlayerRoadSign();
+        List<SignPriorityWay> signPriorityWay = GenerateRoadSign();
         
         if (signPriorityWay[0] != SignPriorityWay.unsigned)//Создаем знаки (если они подразумеваются на перекрестке)
         {
@@ -47,56 +52,38 @@ public class SignsCreator : MonoBehaviour
         }
     }
 
-    //Временное решение "в лоб", отрефакторить
-    private List<SignPriorityWay> GeneratePlayerRoadSign()
+    private List<SignPriorityWay> GenerateRoadSign()
     {
-        int signMainOption = Random.Range(0, 7);
-        List<SignPriorityWay> signsPriorityWay = new List<SignPriorityWay>(4);
+        List<SignPriorityWay> signPriorityWay;
+        int firstSignValueIndex = Random.Range(0, _possibleRoadSign.Count);
+        SignPriorityWay firstSignValue = _possibleRoadSign[firstSignValueIndex];
+        List<SignPriorityWay> variantArrangementSigns = GetVariantArrangementSigns(firstSignValue);
+        int indexSignInPlacement = variantArrangementSigns.IndexOf(firstSignValue);
+        signPriorityWay = new List<SignPriorityWay>(variantArrangementSigns.Count);
+        for (int i = 0; i < variantArrangementSigns.Count; i++)
+        {
+            if (firstSignValue != SignPriorityWay.unsigned)
+            {
+                signPriorityWay.Add(variantArrangementSigns[indexSignInPlacement]);
+                indexSignInPlacement = GetNextIndexSignInPlacement(indexSignInPlacement, variantArrangementSigns.Count);
+            }
+            else
+            {
+                signPriorityWay.Add(firstSignValue);
+            }
+        }        
+        return signPriorityWay;
+    }
 
-        signsPriorityWay.Insert(0, (SignPriorityWay)signMainOption);
-        if (signsPriorityWay[0] == SignPriorityWay.main)
-        {
-            signsPriorityWay.Insert(1, SignPriorityWay.minor);
-            signsPriorityWay.Insert(2, SignPriorityWay.main);
-            signsPriorityWay.Insert(3, SignPriorityWay.minor);            
-        }
-        else if (signsPriorityWay[0] == SignPriorityWay.minor)
-        {
-            signsPriorityWay.Insert(1, SignPriorityWay.main);
-            signsPriorityWay.Insert(2, SignPriorityWay.minor);
-            signsPriorityWay.Insert(3, SignPriorityWay.main);
-        }
-        else if (signsPriorityWay[0] == SignPriorityWay.mainRightTurn)
-        {
-            signsPriorityWay.Insert(1, SignPriorityWay.mainLeftTurn);
-            signsPriorityWay.Insert(2, SignPriorityWay.minorRightTurn);
-            signsPriorityWay.Insert(3, SignPriorityWay.minorLeftTurn);
-        }
-        else if (signsPriorityWay[0] == SignPriorityWay.mainLeftTurn)
-        {
-            signsPriorityWay.Insert(1, SignPriorityWay.minorRightTurn);
-            signsPriorityWay.Insert(2, SignPriorityWay.minorLeftTurn);
-            signsPriorityWay.Insert(3, SignPriorityWay.mainRightTurn);
-        }
-        else if (signsPriorityWay[0] == SignPriorityWay.minorLeftTurn)
-        {
-            signsPriorityWay.Insert(1, SignPriorityWay.mainRightTurn);
-            signsPriorityWay.Insert(2, SignPriorityWay.mainLeftTurn);
-            signsPriorityWay.Insert(3, SignPriorityWay.minorRightTurn);
-        }
-        else if (signsPriorityWay[0] == SignPriorityWay.minorRightTurn)
-        {
-            signsPriorityWay.Insert(1, SignPriorityWay.minorLeftTurn);
-            signsPriorityWay.Insert(2, SignPriorityWay.mainRightTurn);
-            signsPriorityWay.Insert(3, SignPriorityWay.mainLeftTurn);
-        }
-        else
-        {
-            signsPriorityWay.Insert(1, SignPriorityWay.unsigned);
-            signsPriorityWay.Insert(2, SignPriorityWay.unsigned);
-            signsPriorityWay.Insert(3, SignPriorityWay.unsigned);
-        }
-        return signsPriorityWay;
+    private int GetNextIndexSignInPlacement(int currentIndexSignInPlacement, int totalIndexSignInPlacement)
+    {
+        return (currentIndexSignInPlacement + 1) % totalIndexSignInPlacement;
+    }
+
+    private List<SignPriorityWay> GetVariantArrangementSigns(SignPriorityWay signValue)
+    {
+        List<SignPriorityWay> arrangementSignsVariant = _arrangementSignsVariantWhereMainWayCurve.IndexOf(signValue) == -1 ? _arrangementSignsVariantWhereMainWayStraight : _arrangementSignsVariantWhereMainWayCurve;
+        return arrangementSignsVariant;
     }
 
     //Временное решение "в лоб", отрефакторить

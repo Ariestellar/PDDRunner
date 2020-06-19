@@ -228,7 +228,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _roadPrefabs:
   - {fileID: 1688125893225551487, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8, type: 3}
-  - {fileID: 8086050421095119236, guid: 7b76eb040461a5b40854bf0ea0429a0f, type: 3}
   _startBlock: {fileID: 4246482856061723556}
   _currentPartsRoads: []
 --- !u!4 &267753367
@@ -300,6 +299,9 @@ MonoBehaviour:
     type: 3}
   _signLabelMinorWayRightTurn: {fileID: 21300000, guid: bbb2c0ce1558a6844a9ceb1e7d4150c2,
     type: 3}
+  _possibleRoadSign: 00000000010000000200000003000000040000000500000006000000
+  _arrangementSignsVariantWhereMainWayStraight: 01000000020000000100000002000000
+  _arrangementSignsVariantWhereMainWayCurve: 03000000040000000500000006000000
 --- !u!1 &393413278
 GameObject:
   m_ObjectHideFlags: 0
