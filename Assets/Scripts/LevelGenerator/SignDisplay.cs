@@ -2,20 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sign : MonoBehaviour
+public class SignDisplay : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _signLabel;
     [SerializeField] private SpriteRenderer _signLabelMask;
     [SerializeField] private SpriteRenderer _signPriorityLabel;
     [SerializeField] private SpriteRenderer _signPriorityLabelMask;
+        
+    public void Init(Sign sign)
+    {
+        SetLabel(sign.SignLabel);
+        if (sign.SignPriorityLabel != null)
+        {
+            SetPriorityLabel(sign.SignPriorityLabel);
+        }        
+    }
 
-    public void SetLabel(Sprite signLabel)
+    private void SetLabel(Sprite signLabel)
     {
         _signLabel.sprite = signLabel;
         _signLabelMask.sprite = signLabel;
     }
 
-    public void SetPriorityLabel(Sprite signPriorityLabel)
+    private void SetPriorityLabel(Sprite signPriorityLabel)
     {
         _signPriorityLabel.sprite = signPriorityLabel;
         _signPriorityLabelMask.sprite = signPriorityLabel;

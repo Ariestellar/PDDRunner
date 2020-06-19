@@ -12,8 +12,8 @@ public class TrafficSpawnerCrossroad : MonoBehaviour, TrafficSpawner
 
     public void Init(SignsCreator signCreator, CarCreator carCreator)
     {
-        List<SignPriorityWay> signPriorityWay = signCreator.Create(_pointSpawnSign);
-        _cars = carCreator.Create(_pointSpawnCars, signPriorityWay);        
+        signCreator.Create(_pointSpawnSign);        
+        _cars = carCreator.Create(_pointSpawnCars, signCreator.ArrangementValuesSigns);        
     }
 
     public List<GameObject> GetCars()
