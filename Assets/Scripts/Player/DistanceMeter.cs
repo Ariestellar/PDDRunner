@@ -34,7 +34,7 @@ public class DistanceMeter : MonoBehaviour
         if (_roadSpawner.GetLastPartRoad().position.z - transform.position.z < _distanceToСreationNewPartRoad)
         {
             _reachingEndRoad?.Invoke();
-            Debug.Log("Сгенерировать еще участок дороги");
+            Debug.Log("Сгенерировать еще элемент дороги");
         }
     }
     //Проверка дистанции до начала регулирования движения на текущем перекрестке
@@ -44,7 +44,7 @@ public class DistanceMeter : MonoBehaviour
         {
             _isCrossroadsReached = true;
             _startTrafficAtCrossroad?.Invoke();            
-            Debug.Log("Машины на перекрестке поехали");
+            Debug.Log("Машины на элементе дороги поехали");
         }
     }
 
@@ -55,7 +55,7 @@ public class DistanceMeter : MonoBehaviour
         {
             _isCrossroadsReached = false;
             _droveCrossroad?.Invoke();
-            Debug.Log("Включаю интерактив машин на перекрестке");
+            Debug.Log("Интерактив машин на пэлементе дороги включен");
         }
     }
 
