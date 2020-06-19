@@ -1,78 +1,76 @@
 ﻿using GameParametrs;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SignsCreator : MonoBehaviour
 {
-    [SerializeField] private GameObject _templateSign;
-    [SerializeField] private List<SignPriorityWay> _playerRoadSign;   
-     
-    [SerializeField] private Sprite _signLabelMainWay;
-    [SerializeField] private Sprite _signLabelMainWayLeftTurn;
-    [SerializeField] private Sprite _signLabelMainWayRightTurn;
-
-    [SerializeField] private Sprite _signLabelMinorWay;
-    [SerializeField] private Sprite _signLabelMinorWayLeftTurn;
-    [SerializeField] private Sprite _signLabelMinorWayRightTurn;
-
+    [SerializeField] private GameObject _templateSign;    
     [SerializeField] private List<SignPriorityWay> _possibleRoadSign;
+    [SerializeField] private List<SignsPlacementVariants> _fourWayCrossroad;//Пока реализованна генерация для 4ех стороннего перекрестка
 
-    [SerializeField] private List<SignPriorityWay> _arrangementSignsVariantWhereMainWayStraight;
-    [SerializeField] private List<SignPriorityWay> _arrangementSignsVariantWhereMainWayCurve;
+    private List<SignPriorityWay> _arrangementValuesSigns;
+    private List<Sign> _varietiesSigns;
 
-    public List<SignPriorityWay> Create(List<Transform> positionSigns)
+    public List<SignPriorityWay> ArrangementValuesSigns => _arrangementValuesSigns;
+       
+    private void Awake()
     {
-        List<SignPriorityWay> signPriorityWay = GenerateRoadSign();
-        
-        if (signPriorityWay[0] != SignPriorityWay.unsigned)//Создаем знаки (если они подразумеваются на перекрестке)
-        {
-            PrioritizeRoadSigns(CreateListSign(positionSigns), signPriorityWay);
-        }
-
-        return signPriorityWay;
+        _varietiesSigns = Resources.LoadAll<Sign>("Signs").ToList();
     }
 
-    private List<Sign> CreateListSign(List<Transform> positionSigns)
+    public void Create(List<Transform> positionSigns)
     {
-        List<Sign> signs = new List<Sign>();
-        for (int i = 0; i < positionSigns.Count; i++)
+        _arrangementValuesSigns = GenerateSignsArrangementValues();
+        if (_arrangementValuesSigns[0] != SignPriorityWay.unsigned)
         {
-            GameObject signGO = Instantiate(_templateSign, positionSigns[i]);
-            signs.Add(signGO.GetComponent<Sign>());
-        }
-        return signs;
-    }
-        
-    private void PrioritizeRoadSigns(List<Sign> signs, List<SignPriorityWay> playerRoadSign)
-    {       
-        for (int i = 0; i < signs.Count; i++)
-        {
-            LabelRoadSign(signs[i], playerRoadSign[i]);
+            for (int i = 0; i < positionSigns.Count; i++)
+            {
+                GameObject currentSign = Instantiate(_templateSign, positionSigns[i]);
+                currentSign.GetComponent<SignDisplay>().Init(GetValueSign(_arrangementValuesSigns[i]));
+            }
         }
     }
 
-    private List<SignPriorityWay> GenerateRoadSign()
+    private Sign GetValueSign(SignPriorityWay signPriorityWay)
     {
-        List<SignPriorityWay> signPriorityWay;
-        int firstSignValueIndex = Random.Range(0, _possibleRoadSign.Count);
-        SignPriorityWay firstSignValue = _possibleRoadSign[firstSignValueIndex];
-        List<SignPriorityWay> variantArrangementSigns = GetVariantArrangementSigns(firstSignValue);
+        Sign sign = null;
+        foreach (var signValue in _varietiesSigns)
+        {
+            if (signValue.SignPriorityWayValue == signPriorityWay)
+            {
+                sign = signValue;                
+            }            
+        }
+        return sign;
+    }
+
+    private List<SignPriorityWay> GenerateSignsArrangementValues()
+    {
+        SignPriorityWay firstSignValue = GetRandomSign();
+        return ArrangeSignsValues(firstSignValue, GetVariantArrangementSigns(firstSignValue));
+    }
+
+    private List<SignPriorityWay> ArrangeSignsValues(SignPriorityWay firstSignValue, List<SignPriorityWay> variantArrangementSigns)
+    {
+        List<SignPriorityWay> arrangementSigns = new List<SignPriorityWay>();
+
         int indexSignInPlacement = variantArrangementSigns.IndexOf(firstSignValue);
-        signPriorityWay = new List<SignPriorityWay>(variantArrangementSigns.Count);
+
         for (int i = 0; i < variantArrangementSigns.Count; i++)
         {
-            if (firstSignValue != SignPriorityWay.unsigned)
-            {
-                signPriorityWay.Add(variantArrangementSigns[indexSignInPlacement]);
-                indexSignInPlacement = GetNextIndexSignInPlacement(indexSignInPlacement, variantArrangementSigns.Count);
-            }
-            else
-            {
-                signPriorityWay.Add(firstSignValue);
-            }
-        }        
-        return signPriorityWay;
+            arrangementSigns.Add(variantArrangementSigns[indexSignInPlacement]);
+            indexSignInPlacement = GetNextIndexSignInPlacement(indexSignInPlacement, variantArrangementSigns.Count);
+        }
+        return arrangementSigns;
+    }
+
+    private SignPriorityWay GetRandomSign()
+    {
+        int firstSignValueIndex = UnityEngine.Random.Range(0, _possibleRoadSign.Count);
+        return _possibleRoadSign[firstSignValueIndex];
     }
 
     private int GetNextIndexSignInPlacement(int currentIndexSignInPlacement, int totalIndexSignInPlacement)
@@ -82,37 +80,15 @@ public class SignsCreator : MonoBehaviour
 
     private List<SignPriorityWay> GetVariantArrangementSigns(SignPriorityWay signValue)
     {
-        List<SignPriorityWay> arrangementSignsVariant = _arrangementSignsVariantWhereMainWayCurve.IndexOf(signValue) == -1 ? _arrangementSignsVariantWhereMainWayStraight : _arrangementSignsVariantWhereMainWayCurve;
+        List<SignPriorityWay> arrangementSignsVariant = null;
+        foreach (var signsPlacementVariants in _fourWayCrossroad)
+        {
+            if (signsPlacementVariants.Arrangement.Contains(signValue) == true)
+            {
+                arrangementSignsVariant = signsPlacementVariants.Arrangement;
+                break;
+            }
+        }        
         return arrangementSignsVariant;
-    }
-
-    //Временное решение "в лоб", отрефакторить
-    private void LabelRoadSign(Sign sign, SignPriorityWay playerRoadSign)
-    {
-
-        if ((int)playerRoadSign == 1 || ((int)playerRoadSign > 2 && (int)playerRoadSign < 5))
-        {
-            sign.SetLabel(_signLabelMainWay);
-            if (playerRoadSign == SignPriorityWay.mainLeftTurn)
-            {
-                sign.SetPriorityLabel(_signLabelMainWayLeftTurn);
-            }
-            else if (playerRoadSign == SignPriorityWay.mainRightTurn)
-            {
-                sign.SetPriorityLabel(_signLabelMainWayRightTurn);
-            }
-        }
-        else if ((int)playerRoadSign == 2 || ((int)playerRoadSign > 2 && (int)playerRoadSign > 4))
-        {
-            sign.SetLabel(_signLabelMinorWay);
-            if (playerRoadSign == SignPriorityWay.minorLeftTurn)
-            {
-                sign.SetPriorityLabel(_signLabelMinorWayLeftTurn);
-            }
-            else if (playerRoadSign == SignPriorityWay.minorRightTurn)
-            {
-                sign.SetPriorityLabel(_signLabelMinorWayRightTurn);
-            }
-        }
-    }
+    }    
 }

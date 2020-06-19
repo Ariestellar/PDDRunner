@@ -33,8 +33,7 @@ public class DistanceMeter : MonoBehaviour
     {
         if (_roadSpawner.GetLastPartRoad().position.z - transform.position.z < _distanceToСreationNewPartRoad)
         {
-            _reachingEndRoad?.Invoke();
-            Debug.Log("Сгенерировать еще элемент дороги");
+            _reachingEndRoad?.Invoke();            
         }
     }
     //Проверка дистанции до начала регулирования движения на текущем перекрестке
@@ -43,8 +42,7 @@ public class DistanceMeter : MonoBehaviour
         if (_isCrossroadsReached == false && currentCrossroad != null && transform.position.z - currentCrossroad.position.z  > _distanceToStartTrafficCrossroad)
         {
             _isCrossroadsReached = true;
-            _startTrafficAtCrossroad?.Invoke();            
-            Debug.Log("Машины на элементе дороги поехали");
+            _startTrafficAtCrossroad?.Invoke(); 
         }
     }
 
@@ -54,8 +52,7 @@ public class DistanceMeter : MonoBehaviour
         if (currentCrossroad != null && transform.position.z - currentCrossroad.position.z > _distanceToDroveCrossroad)
         {
             _isCrossroadsReached = false;
-            _droveCrossroad?.Invoke();
-            Debug.Log("Интерактив машин на пэлементе дороги включен");
+            _droveCrossroad?.Invoke();            
         }
     }
 

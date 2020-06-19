@@ -288,18 +288,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _templateSign: {fileID: 1589214050427383565, guid: 92f0c502c2b424747bc5cdddc1f9f2fd,
     type: 3}
-  _playerRoadSign: 
-  _signLabelMainWay: {fileID: 21300000, guid: 521a0d1117a2b1f49a74f444cb7125e6, type: 3}
-  _signLabelMainWayLeftTurn: {fileID: 21300000, guid: 996f2c68b97e89e4098f2633f8248114,
-    type: 3}
-  _signLabelMainWayRightTurn: {fileID: 21300000, guid: 809f6226357269a4b91e2806a3575cc9,
-    type: 3}
-  _signLabelMinorWay: {fileID: 21300000, guid: 0a7dcbf324b73874d90946e2d32d57af, type: 3}
-  _signLabelMinorWayLeftTurn: {fileID: 21300000, guid: e9337541a2898cb42a8f6a9df7c29272,
-    type: 3}
-  _signLabelMinorWayRightTurn: {fileID: 21300000, guid: bbb2c0ce1558a6844a9ceb1e7d4150c2,
-    type: 3}
   _possibleRoadSign: 00000000010000000200000003000000040000000500000006000000
+  _fourWayCrossroad:
+  - {fileID: 11400000, guid: 43847de070c8c544cbc709509086df6f, type: 2}
+  - {fileID: 11400000, guid: 84caa0d0b0ae1054f972874bf142825e, type: 2}
+  - {fileID: 11400000, guid: e456639a4551276459e11ea5d5e8894d, type: 2}
   _arrangementSignsVariantWhereMainWayStraight: 01000000020000000100000002000000
   _arrangementSignsVariantWhereMainWayCurve: 03000000040000000500000006000000
 --- !u!1 &393413278
