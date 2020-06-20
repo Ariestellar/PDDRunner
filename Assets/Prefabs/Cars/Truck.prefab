@@ -92,8 +92,8 @@ GameObject:
   - component: {fileID: 1239084215947134116}
   - component: {fileID: 9128545052673630519}
   - component: {fileID: 6866554941013591762}
-  - component: {fileID: 5518302782374264716}
   - component: {fileID: 7067614100393303277}
+  - component: {fileID: 1566029233109580397}
   m_Layer: 0
   m_Name: Truck
   m_TagString: Untagged
@@ -146,24 +146,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.2, y: 3.7, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5518302782374264716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5480773355018628076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e591334d67e30c4f8d33f6d6f338433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _backlight: {fileID: 5311324388062418969}
-  _turnSignalRight: {fileID: 473749727648038771}
-  _turnSignalLeft: {fileID: 1170781058838956706}
-  _priorityStatus: 0
-  _vehicleDirection: 0
-  _sequenceCars: 0
 --- !u!114 &7067614100393303277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,9 +158,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a114ede12d8e046b07b3c79b695143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isMove: 0
   _speed: 20
   _speedRotate: 270
+--- !u!114 &1566029233109580397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480773355018628076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ec1586f379b9041b946bdf234a6ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _backlight: {fileID: 5311324388062418969}
+  _turnSignalRight: {fileID: 473749727648038771}
+  _turnSignalLeft: {fileID: 1170781058838956706}
+  _priorityStatus: 0
+  _vehicleDirection: 0
+  _sequenceCars: 0
 --- !u!1 &6690813909060722352
 GameObject:
   m_ObjectHideFlags: 0

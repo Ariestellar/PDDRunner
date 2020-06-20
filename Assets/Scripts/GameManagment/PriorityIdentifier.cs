@@ -11,7 +11,7 @@ public class PriorityIdentifier : MonoBehaviour
     [SerializeField] private List<GameObject> _allCrossroad;
     [SerializeField] private List<GameObject> _currentCarsAtCrossroad;
 
-    private CarInTraffic _currentCar;    
+    private Car _currentCar;    
 
     private void Awake()
     {
@@ -33,15 +33,6 @@ public class PriorityIdentifier : MonoBehaviour
         _currentCarsAtCrossroad = new List<GameObject>(_allCrossroad[0].GetComponent<TrafficSpawner>().GetCars());
         _crossroadTrafficController.SetListCarsAtCrossroad(_currentCarsAtCrossroad);
         HighlightCurrentCar();
-    }
-
-    public void LaunchOncomingTraffic()//DistanceMeter -> UnityEvent DroveCrossroad
-    {
-        List <GameObject> currentOncomingTraffic = new List<GameObject>(_allCrossroad[0].GetComponent<TrafficSpawner>().GetCarsOncomingTraffic());
-        foreach (var car in currentOncomingTraffic)
-        {
-            car.GetComponent<AIMovement>().OnMove();
-        }
     }
 
     public void RemovePassedCrossroad()//DistanceMeter -> UnityEvent DroveCrossroad
@@ -66,7 +57,7 @@ public class PriorityIdentifier : MonoBehaviour
     {
         if (_currentCarsAtCrossroad.Count != 0)
         {
-            _currentCar = _currentCarsAtCrossroad[0].GetComponent<CarInTraffic>();
+            _currentCar = _currentCarsAtCrossroad[0].GetComponent<Car>();
             _currentCar.ShowHighlight();
         }        
     }

@@ -26,12 +26,12 @@ public class CrossroadTrafficController : MonoBehaviour
     {
         foreach (var car in _carsAtCrossroad)
         {
-            if (car.GetComponent<CarInTraffic>().PriorityStatus == PriorityStatus.priority)
+            if (car.GetComponent<Car>().PriorityStatus == PriorityStatus.priority)
             {
                 _playerData.IncreaseCountActionsGiveWay();
             }
             //Реализация пока без конкретной очередности(для равнозначных дорог)
-            if (car.GetComponent<CarInTraffic>().SequenceCars > 0)
+            if (car.GetComponent<Car>().SequenceCars > 0)
             {                
                 //Машина справа имеет 1(первая) начинает движение при приближении игрока к перекрестку
                 car.GetComponent<AIMovement>().OnMove();

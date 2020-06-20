@@ -9,32 +9,14 @@ public class CarCreator : MonoBehaviour
     [SerializeField] private List<Material> _colorCars;
 
     public List<GameObject> Create(List<Transform> pointSpawnCars, List<SignPriorityWay> signPriorityWays)
-    {
+    {        
         List<GameObject> cars = new List<GameObject>();
-        List<Transform> generatePointSpawnCars = GetGenerateCurrentPointSpawn(pointSpawnCars);
+        List<Transform> randomSpawnPoints = GetRandomSpawnPoints(pointSpawnCars);
 
-        for (int i = 0; i < generatePointSpawnCars.Count; i++)
+        for (int i = 0; i < randomSpawnPoints.Count; i++)
         {
-            GameObject car = CreateCar(generatePointSpawnCars[i]);
+            GameObject car = CreateCar(randomSpawnPoints[i]);
             SetSequeceCar(car, signPriorityWays);
-            cars.Add(car);
-        }
-        return cars;
-    }
-
-    public List<GameObject> Create(List<Transform> _passingTraffic, List<Transform> _oncomingTraffic)
-    {
-        List<GameObject> cars = new List<GameObject>();
-        List<Transform> generatePassingTraffic = GetGenerateCurrentPointSpawn(_passingTraffic);
-
-        for (int i = 0; i < generatePassingTraffic.Count; i++)
-        {
-            GameObject car = CreateCar(generatePassingTraffic[i]);
-        }
-
-        for (int i = 0; i < _oncomingTraffic.Count; i++)
-        {
-            GameObject car = CreateCar(_oncomingTraffic[i]);            
             cars.Add(car);
         }
         return cars;
@@ -47,7 +29,7 @@ public class CarCreator : MonoBehaviour
         return car;
     }
 
-    private List<Transform> GetGenerateCurrentPointSpawn(List<Transform> pointSpawnCarsPosition)
+    private List<Transform> GetRandomSpawnPoints(List<Transform> pointSpawnCarsPosition)
     {
         int countCars = Random.Range(1, 4);
         List<Transform> currentPointSpawnCars = new List<Transform>();
@@ -71,7 +53,7 @@ public class CarCreator : MonoBehaviour
 
     private void SetSequeceCar(GameObject car, List<SignPriorityWay> signPriorityWays)
     {
-        CarInTraffic carInTraffic = car.GetComponent<CarInTraffic>();
+        Car carInTraffic = car.GetComponent<Car>();
 
         VehicleDirection vehicleDirection = GetRandomDirection();
 

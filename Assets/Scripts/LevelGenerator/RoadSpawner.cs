@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent (typeof(CarCreator))]
-[RequireComponent (typeof(SignsCreator))]
 public class RoadSpawner : MonoBehaviour
 {
     public UnityAction<GameObject> CreationNewPartRoad;
@@ -13,19 +11,11 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField] private GameObject _startBlock;    
     [SerializeField] private List<GameObject> _currentPartsRoads;
 
-    private CarCreator _carCreator;
-    private SignsCreator _signCreator;
     private int _roadsCount = 4;
     private float _roadLength = 50;
 
     public List<GameObject> CurrentPartsRoads => _currentPartsRoads;
-
-    private void Awake()
-    {
-        _carCreator = GetComponent<CarCreator>();
-        _signCreator = GetComponent<SignsCreator>();
-    }
-
+        
     private void Start()
     {  
         StartSpawnRoad();        
@@ -47,9 +37,7 @@ public class RoadSpawner : MonoBehaviour
             roadPositionCurrentPart = new Vector3(_startBlock.transform.position.x, _startBlock.transform.position.y, _startBlock.transform.position.z + _roadLength);
 
         currentPartRoad.transform.position = roadPositionCurrentPart;
-        
-        currentPartRoad.GetComponent<TrafficSpawner>().Init(_signCreator, _carCreator);
-               
+
         CurrentPartsRoads.Add(currentPartRoad);
         CreationNewPartRoad?.Invoke(currentPartRoad);
     }

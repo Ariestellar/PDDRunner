@@ -9,29 +9,27 @@ public class SignsCreator : MonoBehaviour
 {
     [SerializeField] private GameObject _templateSign;    
     [SerializeField] private List<SignPriorityWay> _possibleRoadSign;
-    [SerializeField] private List<SignsPlacementVariants> _fourWayCrossroad;//Пока реализованна генерация для 4ех стороннего перекрестка
+    [SerializeField] private List<SignsPlacementVariants> _variantsArrangementSigns;//Пока реализованна генерация для 4ех стороннего перекрестка _signsArrangement_variantsArrangementSigns 
 
-    private List<SignPriorityWay> _arrangementValuesSigns;
     private List<Sign> _varietiesSigns;
 
-    public List<SignPriorityWay> ArrangementValuesSigns => _arrangementValuesSigns;
-       
     private void Awake()
     {
         _varietiesSigns = Resources.LoadAll<Sign>("Signs").ToList();
     }
 
-    public void Create(List<Transform> positionSigns)
+    public List<SignPriorityWay> Create(List<Transform> positionSigns)
     {
-        _arrangementValuesSigns = GenerateSignsArrangementValues();
-        if (_arrangementValuesSigns[0] != SignPriorityWay.unsigned)
+        List<SignPriorityWay> arrangementValuesSigns = GenerateSignsArrangementValues();
+        if (arrangementValuesSigns[0] != SignPriorityWay.unsigned)
         {
             for (int i = 0; i < positionSigns.Count; i++)
             {
                 GameObject currentSign = Instantiate(_templateSign, positionSigns[i]);
-                currentSign.GetComponent<SignDisplay>().Init(GetValueSign(_arrangementValuesSigns[i]));
+                currentSign.GetComponent<SignDisplay>().Init(GetValueSign(arrangementValuesSigns[i]));
             }
         }
+        return arrangementValuesSigns;
     }
 
     private Sign GetValueSign(SignPriorityWay signPriorityWay)
@@ -81,7 +79,7 @@ public class SignsCreator : MonoBehaviour
     private List<SignPriorityWay> GetVariantArrangementSigns(SignPriorityWay signValue)
     {
         List<SignPriorityWay> arrangementSignsVariant = null;
-        foreach (var signsPlacementVariants in _fourWayCrossroad)
+        foreach (var signsPlacementVariants in _variantsArrangementSigns)
         {
             if (signsPlacementVariants.Arrangement.Contains(signValue) == true)
             {
