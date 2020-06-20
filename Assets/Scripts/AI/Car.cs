@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarInTraffic : MonoBehaviour
+public class Car : MonoBehaviour
 {    
     [SerializeField] private Backlight _backlight;
     [SerializeField] private GameObject _turnSignalRight;

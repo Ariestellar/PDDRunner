@@ -650,8 +650,8 @@ GameObject:
   - component: {fileID: 5990325593410743535}
   - component: {fileID: 7948751957818633249}
   - component: {fileID: 5310490290987345608}
-  - component: {fileID: 3477128064658897371}
   - component: {fileID: 3213428288998477984}
+  - component: {fileID: 2338721185028896985}
   m_Layer: 0
   m_Name: Pickup
   m_TagString: Untagged
@@ -704,24 +704,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 1.7, z: 1.8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3477128064658897371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8441562441860972949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e591334d67e30c4f8d33f6d6f338433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _backlight: {fileID: 6440679569807928610}
-  _turnSignalRight: {fileID: 8983680361085607529}
-  _turnSignalLeft: {fileID: 2135377991515781234}
-  _priorityStatus: 0
-  _vehicleDirection: 0
-  _sequenceCars: 0
 --- !u!114 &3213428288998477984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,9 +716,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a114ede12d8e046b07b3c79b695143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isMove: 0
   _speed: 20
   _speedRotate: 270
+--- !u!114 &2338721185028896985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441562441860972949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ec1586f379b9041b946bdf234a6ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _backlight: {fileID: 6440679569807928610}
+  _turnSignalRight: {fileID: 8983680361085607529}
+  _turnSignalLeft: {fileID: 2135377991515781234}
+  _priorityStatus: 0
+  _vehicleDirection: 0
+  _sequenceCars: 0
 --- !u!1001 &22397679813843242
 PrefabInstance:
   m_ObjectHideFlags: 0

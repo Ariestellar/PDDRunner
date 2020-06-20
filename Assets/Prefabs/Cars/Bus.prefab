@@ -482,12 +482,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5677547451594393802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e591334d67e30c4f8d33f6d6f338433, type: 3}
+  m_Script: {fileID: 11500000, guid: 74ec1586f379b9041b946bdf234a6ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _backlight: {fileID: 2273253610011702272}
-  _turnSignalRight: {fileID: 8407178473839476839}
-  _turnSignalLeft: {fileID: 3974451783043620360}
+  _turnSignalRight: {fileID: 3974451783043620360}
+  _turnSignalLeft: {fileID: 8407178473839476839}
   _priorityStatus: 0
   _vehicleDirection: 0
   _sequenceCars: 0
@@ -503,7 +503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a114ede12d8e046b07b3c79b695143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isMove: 0
   _speed: 20
   _speedRotate: 270
 --- !u!1 &7311981971446545722

@@ -9,7 +9,7 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.GetComponent<CarInTraffic>())
+        if (collision.gameObject.GetComponent<Car>())
         {
             _сlashWithCar?.Invoke();
         }

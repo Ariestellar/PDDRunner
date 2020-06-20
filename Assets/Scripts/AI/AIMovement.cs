@@ -19,11 +19,11 @@ public class AIMovement : MonoBehaviour
     public void OnMove()
     {
         _isMove = true;
-        if (GetComponent<CarInTraffic>().Direction == VehicleDirection.right)//решение в лоб, поворот направо
+        if (GetComponent<Car>().Direction == VehicleDirection.right)//решение в лоб, поворот направо
         {
             _isRotate = true;
         }
-        else if (GetComponent<CarInTraffic>().Direction == VehicleDirection.left)
+        else if (GetComponent<Car>().Direction == VehicleDirection.left)
         { 
         
         }

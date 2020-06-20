@@ -620,7 +620,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8086050421095119353}
   - component: {fileID: 8086050421095119238}
-  - component: {fileID: 8515580705170137495}
   m_Layer: 0
   m_Name: RoadBedStraight(50unit)
   m_TagString: Untagged
@@ -664,26 +663,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 1, z: 50}
   m_Center: {x: -4, y: -0.5, z: 25}
---- !u!114 &8515580705170137495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8086050421095119236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b38dd3b42696fc047b8a7adf26be7837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cars: []
-  _oncomingCars: []
-  _oncomingTraffic:
-  - {fileID: 3526093677950141595}
-  _passingTraffic:
-  - {fileID: 7131441699145594647}
-  - {fileID: 1691920987570727541}
-  - {fileID: 820127558062742159}
 --- !u!1 &8545101071668584754
 GameObject:
   m_ObjectHideFlags: 0
