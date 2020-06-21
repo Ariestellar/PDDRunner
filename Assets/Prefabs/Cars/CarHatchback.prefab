@@ -509,7 +509,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6343977656032665139}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
@@ -521,7 +521,7 @@ Transform:
   - {fileID: 6201426528555990789}
   m_Father: {fileID: 240001390476745522}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &6343977656033513231
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -679,7 +679,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7569790339828469470}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.95, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6343977656032203433}
@@ -698,8 +698,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.5, y: 1.5, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 1.5, z: 4.5}
+  m_Center: {x: 0.02, y: 0, z: -0.001}
 --- !u!54 &7569790339828469465
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -759,8 +759,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9134231235868303027}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.5, y: -0.84999996, z: 0}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: -0.9, z: 0}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children:
   - {fileID: 143245054292212736}
@@ -768,7 +768,7 @@ Transform:
   - {fileID: 7408319402827714879}
   m_Father: {fileID: 240001390476745522}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!114 &6121015284786817619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,7 +911,7 @@ PrefabInstance:
     - target: {fileID: 8207106519793929491, guid: bb826aea0ce04bc44ae2cf280c3dc08f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.15000005
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8207106519793929491, guid: bb826aea0ce04bc44ae2cf280c3dc08f,
         type: 3}
