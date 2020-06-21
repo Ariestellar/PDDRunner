@@ -714,7 +714,6 @@ GameObject:
   - component: {fileID: 5983475325693491533}
   - component: {fileID: 6713650723365416356}
   - component: {fileID: 6242030933975030729}
-  - component: {fileID: 5473224553509440254}
   - component: {fileID: 1893339466969284439}
   m_Layer: 0
   m_Name: Police
@@ -768,20 +767,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 1, z: 1.8}
   m_Center: {x: 0.2, y: 0, z: 0}
---- !u!114 &5473224553509440254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9122963557492517441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a114ede12d8e046b07b3c79b695143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 20
-  _speedRotate: 270
 --- !u!114 &1893339466969284439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,7 +786,6 @@ MonoBehaviour:
   _vehicleDirection: 0
   _relativePositionCars: 0
   _signValue: 0
-  _sequenceCars: 0
 --- !u!1001 &1254818518739059439
 PrefabInstance:
   m_ObjectHideFlags: 0

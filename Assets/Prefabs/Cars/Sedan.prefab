@@ -103,7 +103,6 @@ MonoBehaviour:
   _vehicleDirection: 0
   _relativePositionCars: 0
   _signValue: 0
-  _sequenceCars: 0
 --- !u!95 &395895090194437495
 Animator:
   serializedVersion: 3
@@ -658,7 +657,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5815646745943048242}
   - component: {fileID: 2023252026723369686}
-  - component: {fileID: -2369263278786505677}
   - component: {fileID: 7718101264153586860}
   - component: {fileID: 8202282070566559452}
   m_Layer: 0
@@ -697,20 +695,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.3, y: 1.6, z: 1.8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-2369263278786505677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5362807667438775008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a114ede12d8e046b07b3c79b695143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 20
-  _speedRotate: 270
 --- !u!54 &7718101264153586860
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -746,7 +730,6 @@ MonoBehaviour:
   _vehicleDirection: 0
   _relativePositionCars: 0
   _signValue: 0
-  _sequenceCars: 0
 --- !u!1 &8494537742066544657
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,12 +6,13 @@ using UnityEngine;
 public class PriorityIdentifier : MonoBehaviour
 {    
     [SerializeField] private RoadSpawner _roadSpawner;           
-    [SerializeField] private List<GameObject> _allCrossroad;
-    [SerializeField] private List<Car> _currentCarsAtCrossroad;
+    [SerializeField] private List<GameObject> _allCrossroad;    
     [SerializeField] private SignPriorityWay _valueSignPlayer;
+    [SerializeField] private PlayerGeneration _playerGeneration;
+    [SerializeField] private List<Car> _testListPrioritet;
     //[SerializeField] private List<RelativePositionCars> _sequenceMovementCarsFirstQueue;
     //[SerializeField] private List<RelativePositionCars> _sequenceMovementCarsSecondQueue;
-
+    [SerializeField] private List<Car> _currentCarsAtCrossroad;
     private Car _currentCar;    
 
     private void Awake()
@@ -35,7 +36,8 @@ public class PriorityIdentifier : MonoBehaviour
     {
         RemovePassedCrossroad();//Первоочередно, старый перекресток удаляем из начала списка, и очищаем список машин от пройденных
         _currentCarsAtCrossroad = new List<Car>(_allCrossroad[0].GetComponent<TrafficSpawner>().GetCars());
-        _valueSignPlayer = _allCrossroad[0].GetComponent<TrafficSpawner>().GetValueSignPlayer();        
+        SetTruePriorities(_currentCarsAtCrossroad);
+        //_valueSignPlayer = _allCrossroad[0].GetComponent<TrafficSpawner>().GetValueSignPlayer();        
         HighlightCurrentCar();        
     }   
 
@@ -51,9 +53,11 @@ public class PriorityIdentifier : MonoBehaviour
         PromoteCarList();
     }
     //Задаем правильные(эталонные приоритеты)
-    private void SetTruePriorities()
+    private void SetTruePriorities(List<Car> currentCarsAtCrossroad)
     {
-        
+        List<Car> cars = new List<Car>(currentCarsAtCrossroad);        
+        cars.Add(_playerGeneration.GetPlayerCar());
+        _testListPrioritet = cars;
     }
     
     private void RemovePassedCrossroad()

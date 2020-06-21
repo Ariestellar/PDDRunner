@@ -451,7 +451,6 @@ GameObject:
   - component: {fileID: 5080275561203387736}
   - component: {fileID: 5363370505148258957}
   - component: {fileID: 495869184415314876}
-  - component: {fileID: 3488159310381029726}
   - component: {fileID: 4452486089053834412}
   m_Layer: 0
   m_Name: Bus
@@ -505,20 +504,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 3, z: 2.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3488159310381029726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5677547451594393802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a114ede12d8e046b07b3c79b695143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 20
-  _speedRotate: 270
 --- !u!114 &4452486089053834412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,7 +523,6 @@ MonoBehaviour:
   _vehicleDirection: 0
   _relativePositionCars: 0
   _signValue: 0
-  _sequenceCars: 0
 --- !u!1 &7311981971446545722
 GameObject:
   m_ObjectHideFlags: 0

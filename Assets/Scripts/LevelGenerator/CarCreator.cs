@@ -27,7 +27,7 @@ public class CarCreator : MonoBehaviour
         GameObject currentCar = Instantiate(_templateCars[Random.Range(0, _templateCars.Count)], positionCar.transform);
         currentCar.GetComponentInChildren<MeshRenderer>().material = SetColorCar();
         Car car = currentCar.GetComponent<Car>();
-        car.Init(positionCar.signValue, positionCar.relativePositionCars);
+        car.Init(positionCar.signValue, positionCar.relativePositionCars, GetRandomDirection(positionCar.relativePositionCars));
         return car;
     }
 
@@ -36,5 +36,14 @@ public class CarCreator : MonoBehaviour
         return _colorCars[Random.Range(0, _colorCars.Count)];
     }
 
-    
+    private VehicleDirection GetRandomDirection(RelativePositionCars relativePositionCars)
+    {
+        int directionNumber;
+        do
+        {
+            directionNumber = Random.Range(0, 3);
+        } while ((relativePositionCars == RelativePositionCars.east && (VehicleDirection)directionNumber == VehicleDirection.right)
+        || (relativePositionCars == RelativePositionCars.west && (VehicleDirection)directionNumber == VehicleDirection.left));
+        return (VehicleDirection)directionNumber;
+    }
 }

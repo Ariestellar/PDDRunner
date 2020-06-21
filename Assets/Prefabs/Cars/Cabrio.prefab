@@ -695,7 +695,6 @@ GameObject:
   - component: {fileID: 189564474545042888}
   - component: {fileID: 4512142211359446678}
   - component: {fileID: 6095598178181509996}
-  - component: {fileID: 8569446421198850696}
   - component: {fileID: 453326793895064477}
   m_Layer: 0
   m_Name: Cabrio
@@ -749,20 +748,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.7, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8569446421198850696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7407314238564869533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a114ede12d8e046b07b3c79b695143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 20
-  _speedRotate: 270
 --- !u!114 &453326793895064477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,7 +767,6 @@ MonoBehaviour:
   _vehicleDirection: 0
   _relativePositionCars: 0
   _signValue: 0
-  _sequenceCars: 0
 --- !u!95 &1400142261187645689
 Animator:
   serializedVersion: 3
