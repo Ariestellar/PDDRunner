@@ -1452,8 +1452,6 @@ GameObject:
   - component: {fileID: 1974289056}
   - component: {fileID: 1974289057}
   - component: {fileID: 1974289055}
-  - component: {fileID: 1974289062}
-  - component: {fileID: 1974289063}
   m_Layer: 0
   m_Name: CarPlayer
   m_TagString: Untagged
@@ -1518,29 +1516,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1974289061}
-        m_MethodName: RemovePassedCrossroad
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1974289061}
         m_MethodName: CreateListCarsAtCrossroad
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1974289062}
-        m_MethodName: ResetCountActionsGiveWay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1552,18 +1528,7 @@ MonoBehaviour:
         m_CallState: 2
   _startTrafficAtCrossroad:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1974289063}
-        m_MethodName: StartMoveAtCrossroad
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   "_distanceTo\u0421reationNewPartRoad": 50
   _distanceToDroveCrossroad: 30
   _distanceToStartTrafficCrossroad: 18
@@ -1687,40 +1652,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roadSpawner: {fileID: 267753366}
-  _crossroadTrafficController: {fileID: 1974289063}
-  _playerData: {fileID: 1974289062}
   _allCrossroad:
   - {fileID: 4246482856061723556}
   _currentCarsAtCrossroad: []
---- !u!114 &1974289062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974289052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 004ed40436816984c9605d57a0b245b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1974289063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974289052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45cb5b3e4574ed640bb13fe95e7e1067, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerData: {fileID: 1974289062}
-  _playerMovement: {fileID: 1974289060}
-  _timerTemp: {fileID: 49772808257816050, guid: b2bc545cb03972049913c419abb7399e,
-    type: 3}
-  _carsAtCrossroad: []
+  _valueSignPlayer: 0
 --- !u!1 &2144108979
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class SignsCreator : MonoBehaviour
 {
     [SerializeField] private GameObject _templateSign;    
     [SerializeField] private List<SignPriorityWay> _possibleRoadSign;
-    [SerializeField] private List<SignsPlacementVariants> _variantsArrangementSigns;//Пока реализованна генерация для 4ех стороннего перекрестка _signsArrangement_variantsArrangementSigns 
+    [SerializeField] private List<SignsPlacementVariants> _variantsArrangementSigns;
 
     private List<Sign> _varietiesSigns;
 

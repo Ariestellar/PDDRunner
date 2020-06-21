@@ -7,12 +7,13 @@ using UnityEngine;
 [RequireComponent(typeof(CarCreator))]
 public class TrafficSpawner : MonoBehaviour
 {
-    [SerializeField] private List<Transform> _pointSpawnCars;    
+    [SerializeField] private List<PointSpawnCar> _pointSpawnCars;    
     [SerializeField] private List<Transform> _pointSpawnSign;
 
     private SignsCreator _signCreator;
     private CarCreator _carCreator;
-    private List<GameObject> _cars;
+    private List<Car> _cars;    
+    private List<SignPriorityWay> _signs;    
 
     private void Awake()
     {
@@ -22,11 +23,31 @@ public class TrafficSpawner : MonoBehaviour
 
     private void Start()
     {
-        _cars = _carCreator.Create(_pointSpawnCars, _signCreator.Create(_pointSpawnSign));
+        _signs = _signCreator.Create(_pointSpawnSign);
+        SetValueSignsToSpawnPointsCars(_signs, _pointSpawnCars);
+        _cars = _carCreator.Create(_pointSpawnCars);
     }
 
-    public List<GameObject> GetCars()
+    public List<Car> GetCars()
     {
         return _cars;
+    }
+
+    public SignPriorityWay GetValueSignPlayer()
+    {
+        return _signs[0];
+    }
+
+    //Ссылки на точки и знаки должны быть соответственны,устанавливаются в инспекторе.(счет против часовой стрелки)
+    //0 - юг(всегда игрок)
+    //1 - восток
+    //2 - север
+    //3 - запад
+    private void SetValueSignsToSpawnPointsCars(List<SignPriorityWay> signs, List<PointSpawnCar> pointSpawnCars)
+    {
+        for (int i = 0; i < pointSpawnCars.Count; i++)
+        {
+            pointSpawnCars[i].SetSignValue(signs[i + 1]);
+        }
     }
 }

@@ -10,12 +10,19 @@ public class Car : MonoBehaviour
     [SerializeField] private GameObject _turnSignalLeft;
     [SerializeField] private PriorityStatus _priorityStatus;
     [SerializeField] private VehicleDirection _vehicleDirection;
-
-    [SerializeField] private int _sequenceCars;
-    public int SequenceCars => _sequenceCars;
+    [SerializeField] private RelativePositionCars _relativePositionCars; 
+    [SerializeField] private SignPriorityWay _signValue; 
+    
     public PriorityStatus PriorityStatus => _priorityStatus;
     public VehicleDirection Direction => _vehicleDirection;
 
+    public void Init(SignPriorityWay signValue, RelativePositionCars relativePositionCars)
+    {
+        _relativePositionCars = relativePositionCars;
+        _signValue = signValue;
+        _vehicleDirection = GetRandomDirection(_relativePositionCars);
+        EnableTurnSignalCar(_vehicleDirection);
+    }
     public void SetVehicleDirection(VehicleDirection vehicleDirection)
     {
         _vehicleDirection = vehicleDirection;
@@ -40,13 +47,19 @@ public class Car : MonoBehaviour
         _backlight.ChangeSignMoveCar(priority);
     }
 
-    public void SetSequenceCars(int sequenceCars)
-    {
-        _sequenceCars = sequenceCars;
-    }
-
     public PriorityStatus GetPriorityStatus()
     {
         return _priorityStatus;
+    }
+
+    private VehicleDirection GetRandomDirection(RelativePositionCars relativePositionCars)
+    {
+        int directionNumber;
+        do
+        {
+            directionNumber = Random.Range(0, 3);
+        } while ((relativePositionCars == RelativePositionCars.east && (VehicleDirection)directionNumber == VehicleDirection.right)
+        || (relativePositionCars == RelativePositionCars.west && (VehicleDirection)directionNumber == VehicleDirection.left));
+        return (VehicleDirection)directionNumber;
     }
 }

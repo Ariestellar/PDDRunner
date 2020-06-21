@@ -1311,16 +1311,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pointSpawnCars:
-  - {fileID: 5757601407865843172}
-  - {fileID: 1335900415303292971}
-  - {fileID: 2092371665789320346}
+  - {fileID: 1202728358996687346}
+  - {fileID: 4030049118536072984}
+  - {fileID: 8361403232170704796}
   _pointSpawnSign:
   - {fileID: 631316602151428756}
   - {fileID: 6334931383250023979}
   - {fileID: 5261174878628126161}
   - {fileID: 4808811814323020439}
-  _oncomingCars: []
-  _cars: []
 --- !u!114 &8270335338870922323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1378,6 +1376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5757601407865843172}
+  - component: {fileID: 1202728358996687346}
   m_Layer: 0
   m_Name: PointRespawnCarsEast
   m_TagString: Untagged
@@ -1399,6 +1398,20 @@ Transform:
   m_Father: {fileID: 1688125893225551362}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1202728358996687346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071862048046695467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728eb897a1be80e48a1d2c3faf800ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnChanceOnPoint: 80
+  _relativePositionCars: 0
 --- !u!1 &3137593188327902474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,6 +1451,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2092371665789320346}
+  - component: {fileID: 8361403232170704796}
   m_Layer: 0
   m_Name: PointRespawnCarsWest
   m_TagString: Untagged
@@ -1459,6 +1473,20 @@ Transform:
   m_Father: {fileID: 1688125893225551362}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8361403232170704796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742378132239321175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728eb897a1be80e48a1d2c3faf800ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnChanceOnPoint: 75
+  _relativePositionCars: 2
 --- !u!1 &4423075826197924683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,6 +1846,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1335900415303292971}
+  - component: {fileID: 4030049118536072984}
   m_Layer: 0
   m_Name: PointRespawnCarsNord
   m_TagString: Untagged
@@ -1839,6 +1868,20 @@ Transform:
   m_Father: {fileID: 1688125893225551362}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &4030049118536072984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252747299042097113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728eb897a1be80e48a1d2c3faf800ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnChanceOnPoint: 60
+  _relativePositionCars: 1
 --- !u!1 &7205659379947884819
 GameObject:
   m_ObjectHideFlags: 0

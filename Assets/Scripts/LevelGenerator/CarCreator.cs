@@ -5,45 +5,30 @@ using UnityEngine;
 
 public class CarCreator : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _templateCars;
+    [SerializeField] private List<GameObject> _templateCars;    
     [SerializeField] private List<Material> _colorCars;
 
-    public List<GameObject> Create(List<Transform> pointSpawnCars, List<SignPriorityWay> signPriorityWays)
+    public List<Car> Create(List<PointSpawnCar> pointSpawnCars)
     {        
-        List<GameObject> cars = new List<GameObject>();
-        List<Transform> randomSpawnPoints = GetRandomSpawnPoints(pointSpawnCars);
+        List<Car> cars = new List<Car>();
 
-        for (int i = 0; i < randomSpawnPoints.Count; i++)
+        foreach (var pointSpawn in pointSpawnCars)
         {
-            GameObject car = CreateCar(randomSpawnPoints[i]);
-            SetSequeceCar(car, signPriorityWays);
-            cars.Add(car);
+            if (pointSpawn.spawnChanceOnPoint >= Random.Range(0, 100))
+            {                
+                cars.Add(CreateCar(pointSpawn));
+            }
         }
         return cars;
     }
 
-    public GameObject CreateCar(Transform positionCar)
+    private Car CreateCar(PointSpawnCar positionCar)
     {        
-        GameObject car = Instantiate(_templateCars[Random.Range(0, _templateCars.Count)], positionCar);      
-        car.GetComponentInChildren<MeshRenderer>().material = SetColorCar();        
+        GameObject currentCar = Instantiate(_templateCars[Random.Range(0, _templateCars.Count)], positionCar.transform);
+        currentCar.GetComponentInChildren<MeshRenderer>().material = SetColorCar();
+        Car car = currentCar.GetComponent<Car>();
+        car.Init(positionCar.signValue, positionCar.relativePositionCars);
         return car;
-    }
-
-    private List<Transform> GetRandomSpawnPoints(List<Transform> pointSpawnCarsPosition)
-    {
-        int countCars = Random.Range(1, 4);
-        List<Transform> currentPointSpawnCars = new List<Transform>();
-        Transform pointSpawnCars;
-        for (int i = 0; i < countCars; i++)
-        {
-            do
-            {
-                pointSpawnCars = pointSpawnCarsPosition[Random.Range(0, pointSpawnCarsPosition.Count)];
-            } while (currentPointSpawnCars.Contains(pointSpawnCars));
-
-            currentPointSpawnCars.Add(pointSpawnCars);
-        }
-        return currentPointSpawnCars;
     }
 
     private Material SetColorCar()
@@ -51,52 +36,5 @@ public class CarCreator : MonoBehaviour
         return _colorCars[Random.Range(0, _colorCars.Count)];
     }
 
-    private void SetSequeceCar(GameObject car, List<SignPriorityWay> signPriorityWays)
-    {
-        Car carInTraffic = car.GetComponent<Car>();
-
-        VehicleDirection vehicleDirection = GetRandomDirection();
-
-        /*carInTraffic.EnableTurnSignalCar(vehicleDirection);
-        carInTraffic.SetVehicleDirection(vehicleDirection);*/
-
-        //Временное решение "в лоб", отрефакторить, формализировать относительное положение машин
-        if (car.transform.rotation.eulerAngles.y == 180)//Машина справа
-        {
-            if ((int)signPriorityWays[1] == 0 || (int)signPriorityWays[1] == 1 || ((int)signPriorityWays[1] > 2 && (int)signPriorityWays[1] < 5) || (int)signPriorityWays[1] == 6)
-            {
-                carInTraffic.SetSequenceCars(1);
-                vehicleDirection = VehicleDirection.straight;//временно 
-            }
-            else
-            {
-                carInTraffic.SetSequenceCars(0);
-            }            
-        }
-        else if(car.transform.rotation.eulerAngles.y == 90)//Машина напротив
-        {
-            carInTraffic.SetSequenceCars(0);
-        }
-        else if (car.transform.rotation.eulerAngles.y == 0)//Машина слева
-        {
-            if ((int)signPriorityWays[3] == 1 || (int)signPriorityWays[3] == 4)
-            {
-                carInTraffic.SetSequenceCars(1);
-            }
-            else
-            {
-                carInTraffic.SetSequenceCars(0);
-            }
-        }
-
-        carInTraffic.EnableTurnSignalCar(vehicleDirection);
-        carInTraffic.SetVehicleDirection(vehicleDirection);
-    }
-
-
-    private VehicleDirection GetRandomDirection()
-    {        
-        int directionNumber = Random.Range(0,3);
-        return (VehicleDirection)directionNumber;
-    }
+    
 }

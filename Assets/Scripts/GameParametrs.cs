@@ -27,4 +27,12 @@ namespace GameParametrs
         right,
         straight
     }
+        
+    public enum RelativePositionCars
+    {
+        east,
+        nord,
+        west,
+        player
+    }
 }
