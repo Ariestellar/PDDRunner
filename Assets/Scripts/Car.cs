@@ -10,9 +10,10 @@ public class Car : MonoBehaviour
     [SerializeField] private GameObject _turnSignalLeft;
     [SerializeField] private PriorityStatus _priorityStatus;
     [SerializeField] private VehicleDirection _vehicleDirection;
-    [SerializeField] private RelativePositionCars _relativePositionCars; 
-    [SerializeField] private SignPriorityWay _signValue;     
-    
+    [SerializeField] private RelativePositionCars _relativePositionCars;
+    [SerializeField] private SignPriorityWay _signValue;
+
+    public RelativePositionCars RelativePositionCars => _relativePositionCars;
     public PriorityStatus PriorityStatus => _priorityStatus;
     public VehicleDirection Direction => _vehicleDirection;
 

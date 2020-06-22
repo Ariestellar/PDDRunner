@@ -27,7 +27,7 @@ public class CarCreator : MonoBehaviour
         GameObject currentCar = Instantiate(_templateCars[Random.Range(0, _templateCars.Count)], positionCar.transform);
         currentCar.GetComponentInChildren<MeshRenderer>().material = SetColorCar();
         Car car = currentCar.GetComponent<Car>();
-        car.Init(positionCar.signValue, positionCar.relativePositionCars, GetRandomDirection(positionCar.relativePositionCars));
+        car.Init(positionCar.signValue, positionCar.relativePositionCars, /*GetRandomDirection(positionCar.relativePositionCars) для тестов использую ручную установку*/ positionCar.GetCarDirection());
         return car;
     }
 

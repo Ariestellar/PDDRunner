@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class PointSpawnCar : MonoBehaviour
 {
-    [Range(0f, 100f)] [SerializeField] private int _spawnChanceOnPoint;//Указывать в процентах, изменяется для корректировки сложности
+    //Шансы указывать в процентах, изменяется для корректировки сложности
+    [Range(0f, 100f)] [SerializeField] private int _spawnChanceOnPoint;
+    /*[Range(0f, 100f)] [SerializeField] private int _chanceTurnRight;
+    [Range(0f, 100f)] [SerializeField] private int _chanceTurnLeft;
+    [Range(0f, 100f)] [SerializeField] private int _chanceTurnStraight;*/
     [SerializeField] private RelativePositionCars _relativePositionCars;
     private SignPriorityWay _signValue;    
     
@@ -13,8 +17,18 @@ public class PointSpawnCar : MonoBehaviour
     public int spawnChanceOnPoint => _spawnChanceOnPoint;
     public RelativePositionCars relativePositionCars => _relativePositionCars;
 
+    //Для тестов
+    [SerializeField] private VehicleDirection __carDirectionTest;
+
     public void SetSignValue(SignPriorityWay signValue)
     {
         _signValue = signValue;        
     }
+
+    public VehicleDirection GetCarDirection()
+    {
+        return __carDirectionTest;
+    }
+
+
 }

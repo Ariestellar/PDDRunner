@@ -23,9 +23,9 @@ namespace GameParametrs
 
     public enum VehicleDirection
     {
-        left,
-        right,
-        straight
+        left = 0,
+        right = 1,
+        straight = 2
     }
         
     public enum RelativePositionCars
