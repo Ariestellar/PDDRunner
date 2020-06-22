@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: a64c34c1a6cef3147826ca6c2f0d5b30, type: 2}
+--- !u!114 &97178536 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5005899581114097262, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1844750354}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c2d0090586b5b418eec6820f99bc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &354707786
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +225,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &515402849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2044226296699873095, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1844750354}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c2d0090586b5b418eec6820f99bc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &672342653 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8436795159194535428, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1844750354}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c2d0090586b5b418eec6820f99bc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1166403753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7949242637774420555, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1844750354}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c2d0090586b5b418eec6820f99bc5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1374691714
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,11 +376,36 @@ PrefabInstance:
       propertyPath: _spawnChanceOnPoint
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1202728358996687346, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
+        type: 3}
+      propertyPath: __carDirectionTest
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1242952267682206905, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1246402576365265093, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
+        type: 3}
+      propertyPath: _pointRespawnCarsEast
+      value: 
+      objectReference: {fileID: 672342653}
+    - target: {fileID: 1246402576365265093, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
+        type: 3}
+      propertyPath: _pointRespawnCarsNord
+      value: 
+      objectReference: {fileID: 1166403753}
+    - target: {fileID: 1246402576365265093, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
+        type: 3}
+      propertyPath: _pointRespawnCarsWest
+      value: 
+      objectReference: {fileID: 515402849}
+    - target: {fileID: 1246402576365265093, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
+        type: 3}
+      propertyPath: _pointRespawnCarsPlayer
+      value: 
+      objectReference: {fileID: 97178536}
     - target: {fileID: 1688125893225551362, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -433,6 +506,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3935544064773292787, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
+        type: 3}
+      propertyPath: _spawnChanceOnPoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4030049118536072984, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
         type: 3}
       propertyPath: _spawnChanceOnPoint
@@ -472,6 +550,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167819391525681267, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5194883672617883369, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
         type: 3}
@@ -542,6 +625,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _spawnChanceOnPoint
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361403232170704796, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
+        type: 3}
+      propertyPath: __carDirectionTest
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8529692601504368103, guid: 8b8aeae6d57ff424b8d12b6cc99ee2e8,
         type: 3}

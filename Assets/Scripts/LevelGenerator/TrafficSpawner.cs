@@ -7,13 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(CarCreator))]
 public class TrafficSpawner : MonoBehaviour
 {
+    [SerializeField] private MovementTraffic _movementTraffic;
     [SerializeField] private List<PointSpawnCar> _pointSpawnCars;    
     [SerializeField] private List<Transform> _pointSpawnSign;
-
-    [SerializeField] private PointMovement _pointRespawnCarsEast;
-    [SerializeField] private PointMovement _pointRespawnCarsNord;
-    [SerializeField] private PointMovement _pointRespawnCarsWest;
-    [SerializeField] private PointMovement _pointRespawnCarsPlayer;
 
     private SignsCreator _signCreator;
     private CarCreator _carCreator;
@@ -32,7 +28,7 @@ public class TrafficSpawner : MonoBehaviour
         SetValueSignsToSpawnPointsCars(_signs, _pointSpawnCars);
         _cars = _carCreator.Create(_pointSpawnCars);
 
-        TestTrafficMovement();
+        _movementTraffic.Go(_cars); //пока запускаю здесь для тестовой сцены потом перенести в событие, когда машина игрока достигает перекрестка
     }
 
     public List<Car> GetCars()
@@ -56,28 +52,5 @@ public class TrafficSpawner : MonoBehaviour
         {
             pointSpawnCars[i].SetSignValue(signs[i + 1]);
         }
-    }
-
-    private void TestTrafficMovement()
-    {
-        foreach (var car in _cars)
-        {
-            if (car.RelativePositionCars == RelativePositionCars.east)
-            {
-                _pointRespawnCarsEast.GetPointsMovement(car.Direction);
-            }
-            else if (car.RelativePositionCars == RelativePositionCars.nord)
-            {
-                _pointRespawnCarsNord.GetPointsMovement(car.Direction);
-            }
-            else if (car.RelativePositionCars == RelativePositionCars.west)
-            {
-                _pointRespawnCarsWest.GetPointsMovement(car.Direction);
-            }
-            else if (car.RelativePositionCars == RelativePositionCars.player)
-            {
-                _pointRespawnCarsPlayer.GetPointsMovement(car.Direction);
-            }
-        }
-    }
+    }    
 }

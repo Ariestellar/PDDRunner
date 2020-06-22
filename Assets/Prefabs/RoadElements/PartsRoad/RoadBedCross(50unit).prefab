@@ -1251,6 +1251,7 @@ GameObject:
   - component: {fileID: 1117534488526338954}
   - component: {fileID: 8270335338870922323}
   - component: {fileID: 6794574381301030300}
+  - component: {fileID: 1246402576365265093}
   m_Layer: 0
   m_Name: RoadBedCross(50unit)
   m_TagString: Untagged
@@ -1311,6 +1312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a73f9e7f483af34aa5199e5ad8c425b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movementTraffic: {fileID: 1246402576365265093}
   _pointSpawnCars:
   - {fileID: 1202728358996687346}
   - {fileID: 4030049118536072984}
@@ -1320,10 +1322,6 @@ MonoBehaviour:
   - {fileID: 6334931383250023979}
   - {fileID: 5261174878628126161}
   - {fileID: 4808811814323020439}
-  _pointRespawnCarsEast: {fileID: 8436795159194535428}
-  _pointRespawnCarsNord: {fileID: 7949242637774420555}
-  _pointRespawnCarsWest: {fileID: 2044226296699873095}
-  _pointRespawnCarsPlayer: {fileID: 5005899581114097262}
 --- !u!114 &8270335338870922323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,6 +1367,23 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7f915564e02d7624aaa88d7674e83075, type: 2}
   - {fileID: 2100000, guid: 2a6c8fdceeee488418663a46854ab545, type: 2}
   - {fileID: 2100000, guid: 4add69fc6d74a5946ae4c9a81ed429ef, type: 2}
+--- !u!114 &1246402576365265093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688125893225551487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9113ed8ed3f7e50489ce5d372a2a15cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _routes:
+  - {fileID: 8436795159194535428}
+  - {fileID: 7949242637774420555}
+  - {fileID: 2044226296699873095}
+  - {fileID: 5005899581114097262}
 --- !u!1 &2071862048046695467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,6 +1432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnChanceOnPoint: 80
   _relativePositionCars: 0
+  __carDirectionTest: 0
 --- !u!114 &235695852133402863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1530,6 +1546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnChanceOnPoint: 75
   _relativePositionCars: 2
+  __carDirectionTest: 0
 --- !u!1 &4423075826197924683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,6 +1943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnChanceOnPoint: 60
   _relativePositionCars: 1
+  __carDirectionTest: 0
 --- !u!1 &7205659379947884819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,6 +2020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnChanceOnPoint: 75
   _relativePositionCars: 2
+  __carDirectionTest: 0
 --- !u!1 &7570871063425474339
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,7 +2170,7 @@ PrefabInstance:
     - target: {fileID: 5390199941375523165, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6092693886160491252, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
@@ -2302,7 +2321,7 @@ PrefabInstance:
     - target: {fileID: 2935721501792719450, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3074050898515882100, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
@@ -2434,7 +2453,12 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7dcb2ea254d73e945838fb6c8287a132, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8628291389004151675, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5, type: 3}
+    - {fileID: 2674318585487621619, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5, type: 3}
+    - {fileID: 5704584306049911084, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5, type: 3}
+    - {fileID: 231561916419939644, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5, type: 3}
+    - {fileID: 2904139460128651840, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5, type: 3}
 --- !u!4 &3859383938761421576 stripped
 Transform:
@@ -2484,7 +2508,7 @@ PrefabInstance:
     - target: {fileID: 5390199941375523165, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7423751618457544869, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
@@ -2675,7 +2699,7 @@ PrefabInstance:
     - target: {fileID: 7423751618457544869, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7788319813352045168, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
@@ -2747,14 +2771,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d649593a0918a5049a23943679be0a67, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5, type: 3}
---- !u!4 &2208641873227224877 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7961596646981820140, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
-    type: 3}
-  m_PrefabInstance: {fileID: 8132350713944197569}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7949242637774420555 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2200725217081766794, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
@@ -2767,3 +2786,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c2d0090586b5b418eec6820f99bc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2208641873227224877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7961596646981820140, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8132350713944197569}
+  m_PrefabAsset: {fileID: 0}

@@ -30,9 +30,9 @@ namespace GameParametrs
         
     public enum RelativePositionCars
     {
-        east,
-        nord,
-        west,
-        player
+        east = 0,
+        nord = 1,
+        west = 2,
+        player = 3
     }
 }

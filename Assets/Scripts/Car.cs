@@ -13,6 +13,7 @@ public class Car : MonoBehaviour
     [SerializeField] private RelativePositionCars _relativePositionCars;
     [SerializeField] private SignPriorityWay _signValue;
 
+    public SignPriorityWay SignValue => _signValue;
     public RelativePositionCars RelativePositionCars => _relativePositionCars;
     public PriorityStatus PriorityStatus => _priorityStatus;
     public VehicleDirection Direction => _vehicleDirection;
