@@ -13,15 +13,11 @@ public class Route : MonoBehaviour
     [SerializeField] private List<Transform> _pointsMovementStraight;
     [SerializeField] private List<Transform> _pointsMovementLeft;
     [SerializeField] private List<GameObject> _sidesMovement;
-    [SerializeField] private List<BoxCollider> _colliderSides;
-    [SerializeField] private SignPriorityWay _signValue;//дублирующий параметр "Car"
-    [SerializeField] private Car _car;
+    [SerializeField] private List<BoxCollider> _colliderSides;    
 
     private List<List<Transform>> _pointsMovement;
     private BoxCollider _colliderPointsMovement;
-    private Bounds _bound;
-
-    public SignPriorityWay SignValue => _signValue;
+    
 
     private void Start()
     {
@@ -29,19 +25,12 @@ public class Route : MonoBehaviour
     }
 
     public void Init(Car car)
-    {
-        _car = car;
-        _signValue = car.SignValue;
-        VehicleDirection vehicleDirection = _car.Direction;
+    {        
+        VehicleDirection vehicleDirection = car.direction;
         _sidesMovement[(int)vehicleDirection].SetActive(true);
 
-        List<Transform>  currentPoint = _pointsMovement[(int)vehicleDirection];//точки текущего направления для NavMesh
+        //List<Transform>  currentPoint = _pointsMovement[(int)vehicleDirection];//точки текущего направления для NavMesh
         _colliderPointsMovement  = _colliderSides[(int)vehicleDirection];//коллайдер текущего направления для определения пересечений
-        _bound = _colliderPointsMovement.bounds;//Границы коллайдера
-    }
-
-    public Bounds GetBoundMovement()
-    {
-        return _bound;
+        car.SetCarRoute(_colliderPointsMovement.bounds);//Границы коллайдера
     }
 }

@@ -1314,6 +1314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementTraffic: {fileID: 1246402576365265093}
   _pointSpawnCars:
+  - {fileID: 3935544064773292787}
   - {fileID: 1202728358996687346}
   - {fileID: 4030049118536072984}
   - {fileID: 8361403232170704796}
@@ -1384,6 +1385,10 @@ MonoBehaviour:
   - {fileID: 7949242637774420555}
   - {fileID: 2044226296699873095}
   - {fileID: 5005899581114097262}
+  _firstQueue: []
+  _secondQueue: []
+  _thirdQueue: []
+  _fourthQueue: []
 --- !u!1 &2071862048046695467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,8 +1399,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5757601407865843172}
   - component: {fileID: 1202728358996687346}
-  - component: {fileID: 235695852133402863}
-  - component: {fileID: 5194883672617883369}
   m_Layer: 0
   m_Name: PointRespawnCarsEast
   m_TagString: Untagged
@@ -1432,44 +1435,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnChanceOnPoint: 80
   _relativePositionCars: 0
-  __carDirectionTest: 0
---- !u!114 &235695852133402863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2071862048046695467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79787c29b151f514b867b4d0f1c2c069, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _points: []
-  _destPoint: 0
-  _agent: {fileID: 5194883672617883369}
---- !u!195 &5194883672617883369
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2071862048046695467}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  _signValue: 0
+  __carDirection: 0
 --- !u!1 &3137593188327902474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,7 +1513,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnChanceOnPoint: 75
   _relativePositionCars: 2
-  __carDirectionTest: 0
+  _signValue: 0
+  __carDirection: 0
 --- !u!1 &4423075826197924683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1943,7 +1911,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnChanceOnPoint: 60
   _relativePositionCars: 1
-  __carDirectionTest: 0
+  _signValue: 0
+  __carDirection: 0
 --- !u!1 &7205659379947884819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,7 +1989,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnChanceOnPoint: 75
   _relativePositionCars: 2
-  __carDirectionTest: 0
+  _signValue: 0
+  __carDirection: 0
 --- !u!1 &7570871063425474339
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,7 +2065,7 @@ PrefabInstance:
     - target: {fileID: 417987005823836845, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
       propertyPath: m_Name
-      value: PointsMovement
+      value: RouteWest
       objectReference: {fileID: 0}
     - target: {fileID: 1034304385534800993, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
@@ -2170,7 +2140,7 @@ PrefabInstance:
     - target: {fileID: 5390199941375523165, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6092693886160491252, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
@@ -2291,7 +2261,7 @@ PrefabInstance:
     - target: {fileID: 417987005823836845, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
       propertyPath: m_Name
-      value: PointsMovement
+      value: RoutePlayer
       objectReference: {fileID: 0}
     - target: {fileID: 1034304385534800993, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
@@ -2321,7 +2291,7 @@ PrefabInstance:
     - target: {fileID: 2935721501792719450, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3074050898515882100, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
@@ -2488,7 +2458,7 @@ PrefabInstance:
     - target: {fileID: 417987005823836845, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
       propertyPath: m_Name
-      value: PointsMovement
+      value: RouteEast
       objectReference: {fileID: 0}
     - target: {fileID: 417987005823836845, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
@@ -2508,7 +2478,7 @@ PrefabInstance:
     - target: {fileID: 5390199941375523165, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7423751618457544869, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
@@ -2604,7 +2574,7 @@ PrefabInstance:
     - target: {fileID: 417987005823836845, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
       propertyPath: m_Name
-      value: PointsMovement
+      value: RouteNord
       objectReference: {fileID: 0}
     - target: {fileID: 417987005823836845, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
@@ -2699,7 +2669,7 @@ PrefabInstance:
     - target: {fileID: 7423751618457544869, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7788319813352045168, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
         type: 3}
@@ -2774,6 +2744,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5, type: 3}
+--- !u!4 &2208641873227224877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7961596646981820140, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8132350713944197569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7949242637774420555 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2200725217081766794, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
@@ -2786,9 +2762,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c2d0090586b5b418eec6820f99bc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2208641873227224877 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7961596646981820140, guid: 63f0d4bc77675ea44bb55bf45ef0f5d5,
-    type: 3}
-  m_PrefabInstance: {fileID: 8132350713944197569}
-  m_PrefabAsset: {fileID: 0}

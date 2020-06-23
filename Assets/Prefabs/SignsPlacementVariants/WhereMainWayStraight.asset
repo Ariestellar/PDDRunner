@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3719b2696a5f42468eaa8cef3aaa6b0, type: 3}
   m_Name: WhereMainWayStraight
   m_EditorClassIdentifier: 
-  _arrangement: 01000000020000000100000002000000
+  _arrangement: 04000000050000000200000003000000

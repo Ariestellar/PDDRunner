@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace GameParametrs 
 {
-    public enum SignPriorityWay
+    public enum SignPriorityWay//Чем незначительнее число, тем менее значительный приоритет
     {
         unsigned = 0,
-        main = 1,
-        minor = 2,
-        mainRightTurn = 3,
-        mainLeftTurn = 4,
-        minorRightTurn = 5,
-        minorLeftTurn = 6,
+        minor = 1,
+        minorRightTurn = 2,
+        minorLeftTurn = 3,
+        mainRightTurn = 4,
+        mainLeftTurn = 5,
+        main = 6,
     }
 
     public enum PriorityStatus

@@ -1,6 +1,7 @@
 ﻿using GameParametrs;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Car : MonoBehaviour
@@ -12,24 +13,23 @@ public class Car : MonoBehaviour
     [SerializeField] private VehicleDirection _vehicleDirection;
     [SerializeField] private RelativePositionCars _relativePositionCars;
     [SerializeField] private SignPriorityWay _signValue;
+    [SerializeField] private Bounds _boundRoute;
 
-    public SignPriorityWay SignValue => _signValue;
-    public RelativePositionCars RelativePositionCars => _relativePositionCars;
-    public PriorityStatus PriorityStatus => _priorityStatus;
-    public VehicleDirection Direction => _vehicleDirection;
+    public Bounds boundRoute => _boundRoute;
+    public VehicleDirection direction => _vehicleDirection;
+    public SignPriorityWay signValue => _signValue;
+    public RelativePositionCars relativePositionCars => _relativePositionCars;
+    public PriorityStatus priorityStatus => _priorityStatus;
+    
 
-    public void Init(SignPriorityWay signValue, RelativePositionCars relativePositionCars, VehicleDirection vehicleDirection)
+    public void Init(VehicleDirection vehicleDirection, RelativePositionCars relativePositionCars, SignPriorityWay signValue)
     {
-        _relativePositionCars = relativePositionCars;
         _signValue = signValue;
+        _relativePositionCars = relativePositionCars;
         _vehicleDirection = vehicleDirection;
-        EnableTurnSignalCar(_vehicleDirection);
+        EnableTurnSignalCar(vehicleDirection);
     }
-    public void SetVehicleDirection(VehicleDirection vehicleDirection)
-    {
-        _vehicleDirection = vehicleDirection;
-    }
-
+        
     public void ShowHighlight()
     {
         _backlight.Show(true);
@@ -49,8 +49,8 @@ public class Car : MonoBehaviour
         _backlight.ChangeSignMoveCar(priority);
     }
 
-    public PriorityStatus GetPriorityStatus()
+    public void SetCarRoute(Bounds boundRoute)
     {
-        return _priorityStatus;
+        _boundRoute = boundRoute;
     }
 }

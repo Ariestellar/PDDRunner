@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7961596646981820140}
   - component: {fileID: 2200725217081766794}
   m_Layer: 0
-  m_Name: PointsMovement
+  m_Name: Route
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,10 +71,8 @@ MonoBehaviour:
   - {fileID: 3182012801524878845}
   - {fileID: 9072669695995825304}
   - {fileID: 8961171431093329951}
-  _colliderPointsMovement: {fileID: 0}
-  _bound:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+  _signValue: 0
+  _car: {fileID: 0}
 --- !u!1 &967091008945622133
 GameObject:
   m_ObjectHideFlags: 0

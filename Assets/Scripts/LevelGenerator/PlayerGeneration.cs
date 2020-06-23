@@ -19,7 +19,7 @@ public class PlayerGeneration : MonoBehaviour
         
         currentCar.GetComponentInChildren<MeshRenderer>().material = SetColorCar();
         Car car = currentCar.GetComponent<Car>();
-        car.Init(SignPriorityWay.unsigned, RelativePositionCars.player, VehicleDirection.straight);
+        car.Init(VehicleDirection.straight, RelativePositionCars.player, _playerPosition.GetComponent<PointSpawnCar>().signValue);
         _playerCar = car;
     }
 
@@ -32,6 +32,4 @@ public class PlayerGeneration : MonoBehaviour
     {
         return _colorCars[Random.Range(0, _colorCars.Count)];
     }
-
-    
 }

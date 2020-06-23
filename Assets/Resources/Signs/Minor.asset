@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63d14332bb62f1458a26a23f6fcac6a, type: 3}
   m_Name: Minor
   m_EditorClassIdentifier: 
-  _signPriorityWay: 2
+  _signPriorityWay: 1
   _signLabel: {fileID: 21300000, guid: 0a7dcbf324b73874d90946e2d32d57af, type: 3}
   _signPriorityLabel: {fileID: 0}

@@ -50,7 +50,7 @@ public class TrafficSpawner : MonoBehaviour
     {
         for (int i = 0; i < pointSpawnCars.Count; i++)
         {
-            pointSpawnCars[i].SetSignValue(signs[i + 1]);
+            pointSpawnCars[i].SetSignValue(signs[i]);
         }
     }    
 }
