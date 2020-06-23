@@ -7,10 +7,10 @@ public class PointSpawnCar : MonoBehaviour
 {
     //Шансы указывать в процентах, изменяется для корректировки сложности
     [Range(0f, 100f)] [SerializeField] private int _spawnChanceOnPoint;    
-    [SerializeField] private RelativePositionCars _relativePositionCars;
-    [SerializeField] private SignPriorityWay _signValue;
+    [SerializeField] private RelativePositionCars _relativePositionCars;    
     [SerializeField] private VehicleDirection __carDirection;
 
+    private SignPriorityWay _signValue;
     public SignPriorityWay signValue => _signValue;
     public int spawnChanceOnPoint => _spawnChanceOnPoint;
     public RelativePositionCars relativePositionCars => _relativePositionCars;   

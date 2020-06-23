@@ -6,9 +6,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Route : MonoBehaviour
-{
-    //Перенести параметры из класса Car сюда, которые не относятся к машине а относяться к маршруту
-    //Временное решение. Рефакторить, можно применить паттерн
+{    
     [SerializeField] private List<Transform> _pointsMovementRight;
     [SerializeField] private List<Transform> _pointsMovementStraight;
     [SerializeField] private List<Transform> _pointsMovementLeft;
@@ -19,7 +17,7 @@ public class Route : MonoBehaviour
     private BoxCollider _colliderPointsMovement;
     
 
-    private void Start()
+    private void Awake()
     {
         _pointsMovement = new List<List<Transform>>() { _pointsMovementLeft, _pointsMovementRight, _pointsMovementStraight };        
     }
@@ -27,9 +25,9 @@ public class Route : MonoBehaviour
     public void Init(Car car)
     {        
         VehicleDirection vehicleDirection = car.direction;
-        _sidesMovement[(int)vehicleDirection].SetActive(true);
+        _sidesMovement[(int)vehicleDirection].SetActive(true);//включаем необходимые точки и коллайдер
 
-        //List<Transform>  currentPoint = _pointsMovement[(int)vehicleDirection];//точки текущего направления для NavMesh
+        car.MovementAtCrossroad.SetPointsMovement(_pointsMovement[(int)vehicleDirection]);//задаем точки текущего направления для NavMesh
         _colliderPointsMovement  = _colliderSides[(int)vehicleDirection];//коллайдер текущего направления для определения пересечений
         car.SetCarRoute(_colliderPointsMovement.bounds);//Границы коллайдера
     }

@@ -24,7 +24,7 @@ public class TrafficSpawner : MonoBehaviour
 
     private void Start()
     {
-        _signs = _signCreator.Create(_pointSpawnSign);
+        _signs = _signCreator.Create(_pointSpawnSign);        
         SetValueSignsToSpawnPointsCars(_signs, _pointSpawnCars);
         _cars = _carCreator.Create(_pointSpawnCars);
 

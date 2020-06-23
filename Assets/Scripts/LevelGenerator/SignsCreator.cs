@@ -26,12 +26,12 @@ public class SignsCreator : MonoBehaviour
             for (int i = 0; i < positionSigns.Count; i++)
             {
                 GameObject currentSign = Instantiate(_templateSign, positionSigns[i]);
-                currentSign.GetComponent<SignDisplay>().Init(GetValueSign(arrangementValuesSigns[i]));
+                currentSign.GetComponent<SignDisplay>().Init(GetValueSign(arrangementValuesSigns[i]));                
             }
         }
         return arrangementValuesSigns;
     }
-
+    
     private Sign GetValueSign(SignPriorityWay signPriorityWay)
     {
         Sign sign = null;

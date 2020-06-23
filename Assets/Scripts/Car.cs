@@ -14,7 +14,9 @@ public class Car : MonoBehaviour
     [SerializeField] private RelativePositionCars _relativePositionCars;
     [SerializeField] private SignPriorityWay _signValue;
     [SerializeField] private Bounds _boundRoute;
+    [SerializeField] private PointMovement _movementAtCrossroad;
 
+    public PointMovement MovementAtCrossroad => _movementAtCrossroad;
     public Bounds boundRoute => _boundRoute;
     public VehicleDirection direction => _vehicleDirection;
     public SignPriorityWay signValue => _signValue;
@@ -24,6 +26,7 @@ public class Car : MonoBehaviour
 
     public void Init(VehicleDirection vehicleDirection, RelativePositionCars relativePositionCars, SignPriorityWay signValue)
     {
+        _movementAtCrossroad = GetComponent<PointMovement>();
         _signValue = signValue;
         _relativePositionCars = relativePositionCars;
         _vehicleDirection = vehicleDirection;

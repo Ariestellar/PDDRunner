@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 7290473224938324500}
   - component: {fileID: 3864755745805901610}
   - component: {fileID: 5478513370493236743}
+  - component: {fileID: 2645669157844559665}
+  - component: {fileID: -5270440282993398125}
   m_Layer: 0
   m_Name: Van
   m_TagString: Untagged
@@ -115,6 +117,48 @@ MonoBehaviour:
   _vehicleDirection: 0
   _relativePositionCars: 0
   _signValue: 0
+  _boundRoute:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  _movementAtCrossroad: {fileID: 0}
+--- !u!195 &2645669157844559665
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087649927284114082}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 8
+  m_Acceleration: 100
+  avoidancePriority: 50
+  m_AngularSpeed: 200
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1.3
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-5270440282993398125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087649927284114082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79787c29b151f514b867b4d0f1c2c069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _points: []
+  _destPoint: 0
+  _agent: {fileID: 0}
+  _isMove: 0
 --- !u!1 &2199321035977993148
 GameObject:
   m_ObjectHideFlags: 0
