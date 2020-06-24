@@ -1626,7 +1626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728eb897a1be80e48a1d2c3faf800ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnChanceOnPoint: 100
+  _spawnChanceOnPoint: 0
   _relativePositionCars: 0
   __carDirection: 1
 --- !u!114 &1246402577895426263
@@ -1652,6 +1652,7 @@ MonoBehaviour:
   _thirdQueue: []
   _fourthQueue: []
   _numberCurrentQueue: 0
+  _CarsMainIntersectionTest: 0
   _tempTimer: {fileID: 49772808257816050, guid: b2bc545cb03972049913c419abb7399e,
     type: 3}
 --- !u!33 &1282485397569790485
@@ -4954,7 +4955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _templateSign: {fileID: 1589214050427383565, guid: 92f0c502c2b424747bc5cdddc1f9f2fd,
     type: 3}
-  _possibleRoadSign: 00000000010000000200000003000000040000000500000006000000
+  _possibleRoadSign: 04000000
   _variantsArrangementSigns:
   - {fileID: 11400000, guid: 43847de070c8c544cbc709509086df6f, type: 2}
   - {fileID: 11400000, guid: 84caa0d0b0ae1054f972874bf142825e, type: 2}

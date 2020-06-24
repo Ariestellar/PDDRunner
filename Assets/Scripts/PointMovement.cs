@@ -7,8 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PointMovement : MonoBehaviour
 {
-    [SerializeField] private List<Transform> _points;
-    [SerializeField] private int _destPoint = 0;
+    [SerializeField] private List<Transform> _points;    
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private bool _isMove;
 

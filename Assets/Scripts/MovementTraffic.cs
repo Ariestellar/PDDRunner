@@ -17,6 +17,7 @@ public class MovementTraffic : MonoBehaviour
 
     [SerializeField] private List<List<Car>> _queues;
     [SerializeField] private int _numberCurrentQueue;
+    [SerializeField] private bool _CarsMainIntersectionTest;
 
     [SerializeField] private GameObject _tempTimer;
     [SerializeField] private Action _queueWent;
@@ -31,7 +32,6 @@ public class MovementTraffic : MonoBehaviour
         _currentCarsAtCrossroad = cars;        
         InitializaceDirectionMovement(_currentCarsAtCrossroad);
         Prioritization(_currentCarsAtCrossroad);
-
         
         StartMovement();
     }
@@ -48,10 +48,13 @@ public class MovementTraffic : MonoBehaviour
     }
 
     private void Prioritization(List<Car> cars)
-    {        
-        for (int i = 0; i < cars.Count; i++)
+    {
+        //задать уровни приоритета (на главной дороге может быть две машины которые едут поочередно)
+
+        _CarsMainIntersectionTest = IsCarsMainIntersection(cars);
+        for (int currentCarNumber = 0; currentCarNumber < cars.Count; currentCarNumber++)
         {
-            CheckIntersections(i, cars);
+            CheckIntersections(currentCarNumber, cars);
         }
     }
 
@@ -59,45 +62,159 @@ public class MovementTraffic : MonoBehaviour
     private void CheckIntersections(int currentCarNumber, List<Car> carsAtCrossroad)
     {
         int numberIntersections = 0;
+                
         for (int carNumberAtCrossroad = 0; carNumberAtCrossroad < carsAtCrossroad.Count; carNumberAtCrossroad++)
         {
             if (currentCarNumber != carNumberAtCrossroad)
             {
-                if (carsAtCrossroad[currentCarNumber].boundRoute.Intersects(carsAtCrossroad[carNumberAtCrossroad].boundRoute))
-                {                    
-                    if (carsAtCrossroad[currentCarNumber].signValue < carsAtCrossroad[carNumberAtCrossroad].signValue)
+                if (carsAtCrossroad[currentCarNumber].signValue == SignPriorityWay.unsigned)
+                {
+                    if (carsAtCrossroad[currentCarNumber].direction == VehicleDirection.straight || carsAtCrossroad[currentCarNumber].direction == VehicleDirection.left)
                     {
-                        numberIntersections += 1;
-                    }
-                    else if(carsAtCrossroad[currentCarNumber].signValue == carsAtCrossroad[carNumberAtCrossroad].signValue)// для равнозначных дорог
-                    {
-                        if (carsAtCrossroad[currentCarNumber].direction == VehicleDirection.left )
+                        if (carsAtCrossroad[currentCarNumber].boundRoute.Intersects(carsAtCrossroad[carNumberAtCrossroad].boundRoute))
                         {
-                            numberIntersections += 1;
-                        }                        
+                            if (IsHindranceOnRight(carsAtCrossroad[currentCarNumber].relativePositionCars, carsAtCrossroad[carNumberAtCrossroad].relativePositionCars))
+                            {
+                                numberIntersections += 1;
+                            }
+                            else if (IsOncomingTraffic(carsAtCrossroad[currentCarNumber].relativePositionCars, carsAtCrossroad[carNumberAtCrossroad].relativePositionCars))
+                            {
+                                numberIntersections += 1;
+                            }
+                        }
                     }
-                }                
-            }            
+                }
+                else if(carsAtCrossroad[currentCarNumber].signValue == SignPriorityWay.main || carsAtCrossroad[currentCarNumber].signValue == SignPriorityWay.minor)
+                {
+                    if (carsAtCrossroad[currentCarNumber].boundRoute.Intersects(carsAtCrossroad[carNumberAtCrossroad].boundRoute))
+                    {
+                        if (carsAtCrossroad[currentCarNumber].signValue == SignPriorityWay.main)
+                        {
+                            if (IsOncomingTraffic(carsAtCrossroad[currentCarNumber].relativePositionCars, carsAtCrossroad[carNumberAtCrossroad].relativePositionCars) && carsAtCrossroad[currentCarNumber].direction == VehicleDirection.left)
+                            {
+                                numberIntersections += 1;
+                            }
+                        }
+                        else if(carsAtCrossroad[currentCarNumber].signValue == SignPriorityWay.minor)
+                        {
+                            if (IsOncomingTraffic(carsAtCrossroad[currentCarNumber].relativePositionCars, carsAtCrossroad[carNumberAtCrossroad].relativePositionCars) && carsAtCrossroad[carNumberAtCrossroad].direction == VehicleDirection.left)
+                            {
+                                //учитываем все пересечения, кроме случая когда встречная машина поворачивает налево
+                            }
+                            else if(carsAtCrossroad[carNumberAtCrossroad].signValue == SignPriorityWay.main && _CarsMainIntersectionTest)//если главные дороги пересекаются
+                            {                                
+                                numberIntersections += 2;
+                            }
+                            else
+                            {
+                                numberIntersections += 1;
+                            }
+                        }                        
+                    }                    
+                }
+                else
+                {
+                    if (carsAtCrossroad[currentCarNumber].boundRoute.Intersects(carsAtCrossroad[carNumberAtCrossroad].boundRoute))
+                    {
+                        if (carsAtCrossroad[currentCarNumber].signValue < carsAtCrossroad[carNumberAtCrossroad].signValue)
+                        {
+                            if (carsAtCrossroad[currentCarNumber].signValue < SignPriorityWay.mainRightTurn && (carsAtCrossroad[carNumberAtCrossroad].signValue == SignPriorityWay.mainRightTurn || carsAtCrossroad[carNumberAtCrossroad].signValue == SignPriorityWay.mainLeftTurn) && _CarsMainIntersectionTest)//главные дороги пересекаються
+                            {
+                                numberIntersections += 2;
+                            }
+                            else
+                            {
+                                numberIntersections += 1;
+                            }                            
+                        }
+                    }
+                }
+            }
+        }
+        SetQueues(numberIntersections, carsAtCrossroad[currentCarNumber]);       
+    }
+
+    private bool IsCarsMainIntersection(List<Car> carsAtCrossroad)//пересекаются ли автомобили на главной дороге?
+    {
+        List<Car> carsMainRoad = new List<Car>();
+        foreach (var car in carsAtCrossroad)
+        {
+            if ((int)car.signValue >= (int)SignPriorityWay.mainRightTurn)
+            {
+                carsMainRoad.Add(car);
+            }
         }
 
+        if (carsMainRoad.Count > 1)
+        {
+            if (carsMainRoad[0].boundRoute.Intersects(carsMainRoad[1].boundRoute))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }      
+    }
+
+    private void SetQueues(int numberIntersections, Car currentCar)
+    {
         if (numberIntersections == 0)
         {
-            _firstQueue.Add(carsAtCrossroad[currentCarNumber]);
+            _firstQueue.Add(currentCar);
         }
         else
         {
             if (numberIntersections == 1)
             {
-                _secondQueue.Add(carsAtCrossroad[currentCarNumber]);
+                _secondQueue.Add(currentCar);
             }
-            else if(numberIntersections == 2)
+            else if (numberIntersections == 2)
             {
-                _thirdQueue.Add(carsAtCrossroad[currentCarNumber]);
+                _thirdQueue.Add(currentCar);
             }
-            else if (numberIntersections == 3)
+            else
             {
-                _fourthQueue.Add(carsAtCrossroad[currentCarNumber]);
+                if (_thirdQueue.Count != 0)
+                {
+                    _fourthQueue.Add(currentCar);
+                }
+                else
+                {
+                    _thirdQueue.Add(currentCar);
+                }                
             }
+        }
+    }
+
+    private bool IsHindranceOnRight(RelativePositionCars currentCar, RelativePositionCars carAtCrossroad)
+    {
+        if ((currentCar == RelativePositionCars.player && carAtCrossroad == RelativePositionCars.east) || (currentCar == RelativePositionCars.east && carAtCrossroad == RelativePositionCars.nord)
+           || (currentCar == RelativePositionCars.nord && carAtCrossroad == RelativePositionCars.west) || (currentCar == RelativePositionCars.west && carAtCrossroad == RelativePositionCars.player))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }        
+    }
+
+    private bool IsOncomingTraffic(RelativePositionCars currentCar, RelativePositionCars carAtCrossroad)
+    {
+        if ((currentCar == RelativePositionCars.player && carAtCrossroad == RelativePositionCars.nord) || (currentCar == RelativePositionCars.east && carAtCrossroad == RelativePositionCars.west)
+           || (currentCar == RelativePositionCars.nord && carAtCrossroad == RelativePositionCars.player) || (currentCar == RelativePositionCars.west && carAtCrossroad == RelativePositionCars.east))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
