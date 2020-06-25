@@ -27,7 +27,7 @@ public class Route : MonoBehaviour
         VehicleDirection vehicleDirection = car.direction;
         _sidesMovement[(int)vehicleDirection].SetActive(true);//включаем необходимые точки и коллайдер
 
-        car.MovementAtCrossroad.SetPointsMovement(_pointsMovement[(int)vehicleDirection]);//задаем точки текущего направления для NavMesh
+        car.movementAtCrossroad.SetPointsMovement(_pointsMovement[(int)vehicleDirection]);//задаем точки текущего направления для NavMesh
         _colliderPointsMovement  = _colliderSides[(int)vehicleDirection];//коллайдер текущего направления для определения пересечений
         car.SetCarRoute(_colliderPointsMovement.bounds);//Границы коллайдера
     }

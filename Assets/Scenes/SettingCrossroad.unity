@@ -1626,9 +1626,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728eb897a1be80e48a1d2c3faf800ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnChanceOnPoint: 0
+  _spawnChanceOnPoint: 100
   _relativePositionCars: 0
-  __carDirection: 1
+  _carDirection: 0
 --- !u!114 &1246402577895426263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3045,9 +3045,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728eb897a1be80e48a1d2c3faf800ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnChanceOnPoint: 100
+  _spawnChanceOnPoint: 0
   _relativePositionCars: 3
-  __carDirection: 2
+  _carDirection: 0
 --- !u!114 &4030049118981412618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3062,7 +3062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnChanceOnPoint: 100
   _relativePositionCars: 1
-  __carDirection: 2
+  _carDirection: 0
 --- !u!1 &4116063615727193904
 GameObject:
   m_ObjectHideFlags: 0
@@ -4955,7 +4955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _templateSign: {fileID: 1589214050427383565, guid: 92f0c502c2b424747bc5cdddc1f9f2fd,
     type: 3}
-  _possibleRoadSign: 04000000
+  _possibleRoadSign: 00000000010000000200000003000000040000000500000006000000
   _variantsArrangementSigns:
   - {fileID: 11400000, guid: 43847de070c8c544cbc709509086df6f, type: 2}
   - {fileID: 11400000, guid: 84caa0d0b0ae1054f972874bf142825e, type: 2}
@@ -5009,7 +5009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnChanceOnPoint: 100
   _relativePositionCars: 2
-  __carDirection: 0
+  _carDirection: 0
 --- !u!1 &8422204674525936927
 GameObject:
   m_ObjectHideFlags: 0

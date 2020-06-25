@@ -11,10 +11,23 @@ public class CarCreator : MonoBehaviour
     public List<Car> Create(List<PointSpawnCar> pointSpawnCars)
     {        
         List<Car> cars = new List<Car>();
+        int lowestValue = 0;
+        //На точке где из всех точек меньше всего шанс появления, машина не генерируется. Т.к. на равнозначных дорогах будет максимум 3 машины из 4 возможных
+        if (pointSpawnCars[0].signValue == SignPriorityWay.unsigned)
+        {
+            lowestValue = pointSpawnCars[0].spawnChanceOnPoint;
+            foreach (var pointSpawn in pointSpawnCars)
+            {
+                if (pointSpawn.spawnChanceOnPoint <= lowestValue)
+                {
+                    lowestValue = pointSpawn.spawnChanceOnPoint;
+                }
+            }            
+        }
 
         foreach (var pointSpawn in pointSpawnCars)
         {
-            if (pointSpawn.spawnChanceOnPoint >= Random.Range(0, 100))
+            if (pointSpawn.spawnChanceOnPoint != lowestValue && pointSpawn.spawnChanceOnPoint >= Random.Range(0, 100))
             {                
                 cars.Add(CreateCar(pointSpawn));
             }

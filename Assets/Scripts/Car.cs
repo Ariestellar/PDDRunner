@@ -15,8 +15,8 @@ public class Car : MonoBehaviour
     [SerializeField] private SignPriorityWay _signValue;
     [SerializeField] private Bounds _boundRoute;
     [SerializeField] private PointMovement _movementAtCrossroad;
-
-    public PointMovement MovementAtCrossroad => _movementAtCrossroad;
+    
+    public PointMovement movementAtCrossroad => _movementAtCrossroad;
     public Bounds boundRoute => _boundRoute;
     public VehicleDirection direction => _vehicleDirection;
     public SignPriorityWay signValue => _signValue;
@@ -30,7 +30,7 @@ public class Car : MonoBehaviour
         _signValue = signValue;
         _relativePositionCars = relativePositionCars;
         _vehicleDirection = vehicleDirection;
-        EnableTurnSignalCar(vehicleDirection);
+        EnableTurnSignalCar(vehicleDirection);        
     }
         
     public void ShowHighlight()
@@ -55,5 +55,5 @@ public class Car : MonoBehaviour
     public void SetCarRoute(Bounds boundRoute)
     {
         _boundRoute = boundRoute;
-    }
+    }    
 }

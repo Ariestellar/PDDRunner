@@ -35,4 +35,11 @@ namespace GameParametrs
         west = 2,
         player = 3
     }
+
+    public enum VehicleMovementStatus
+    {
+        stands,
+        rides,
+        drove
+    }
 }

@@ -8,7 +8,7 @@ public class PointSpawnCar : MonoBehaviour
     //Шансы указывать в процентах, изменяется для корректировки сложности
     [Range(0f, 100f)] [SerializeField] private int _spawnChanceOnPoint;    
     [SerializeField] private RelativePositionCars _relativePositionCars;    
-    [SerializeField] private VehicleDirection __carDirection;
+    [SerializeField] private VehicleDirection _carDirection;
 
     private SignPriorityWay _signValue;
     public SignPriorityWay signValue => _signValue;
@@ -22,17 +22,26 @@ public class PointSpawnCar : MonoBehaviour
 
     public VehicleDirection GetCarDirection()
     {
-        return __carDirection;
+        return GetRandomDirection(_relativePositionCars, _signValue);
     }
 
-    private VehicleDirection GetRandomDirection(RelativePositionCars relativePositionCars)
+    private VehicleDirection GetRandomDirection(RelativePositionCars relativePositionCars, SignPriorityWay signValue)
     {
         int directionNumber;
         do
         {
-            directionNumber = Random.Range(0, 3);
-        } while ((relativePositionCars == RelativePositionCars.east && (VehicleDirection)directionNumber == VehicleDirection.right)
+            if (signValue == SignPriorityWay.unsigned)//на равнозначных дорогах исключаем поворот на лево
+            {
+                directionNumber = Random.Range(1, 3);
+            }
+            else
+            {
+                directionNumber = Random.Range(0, 3);
+            }
+            
+        } while ((relativePositionCars == RelativePositionCars.east && (VehicleDirection)directionNumber == VehicleDirection.right)//В игре машины не должны ехать в направлении игрока
         || (relativePositionCars == RelativePositionCars.west && (VehicleDirection)directionNumber == VehicleDirection.left));
+
         return (VehicleDirection)directionNumber;
     }
 }
