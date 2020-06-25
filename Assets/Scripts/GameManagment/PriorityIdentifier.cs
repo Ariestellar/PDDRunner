@@ -2,15 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Класс описывает момент когда автомобиль игрока приближается к ключевому элементу дороги и расставляет приоритеты 
 public class PriorityIdentifier : MonoBehaviour
 {    
-    [SerializeField] private RoadSpawner _roadSpawner;       
-    [SerializeField] private CrossroadTrafficController _crossroadTrafficController;    
-    [SerializeField] private PlayerData _playerData;
-    [SerializeField] private List<GameObject> _allCrossroad;
-    [SerializeField] private List<GameObject> _currentCarsAtCrossroad;
-
+    [SerializeField] private RoadSpawner _roadSpawner;           
+    [SerializeField] private List<GameObject> _allCrossroad;    
+    [SerializeField] private SignPriorityWay _valueSignPlayer;
+    [SerializeField] private PlayerGeneration _playerGeneration;
+    [SerializeField] private List<Car> _testListPrioritet;
+    //[SerializeField] private List<RelativePositionCars> _sequenceMovementCarsFirstQueue;
+    //[SerializeField] private List<RelativePositionCars> _sequenceMovementCarsSecondQueue;
+    [SerializeField] private List<Car> _currentCarsAtCrossroad;
     private Car _currentCar;    
 
     private void Awake()
@@ -18,6 +20,7 @@ public class PriorityIdentifier : MonoBehaviour
         _roadSpawner.CreationNewPartRoad += SetAllGeneratedCrossroads;        
     }
 
+    //Новые элементы дороги включаются в конец списока при создании(т.к. сначала списка прекрестки используются и удалаются)
     public void SetAllGeneratedCrossroads(GameObject crossroad)
     { 
         _allCrossroad.Add(crossroad);               
@@ -28,18 +31,15 @@ public class PriorityIdentifier : MonoBehaviour
         return _allCrossroad[0].transform;
     }
 
-    public void CreateListCarsAtCrossroad()//DistanceMeter -> UnityEvent DroveCrossroad
+    //При проследовании последнего перекрестка, получаем новый, предстоящий перекресток и список актуальных машин сгенерированных на нем
+    public void CreateListCarsAtCrossroad()//DistanceMeter -> UnityEvent DroveCrossroad 
     {
-        _currentCarsAtCrossroad = new List<GameObject>(_allCrossroad[0].GetComponent<TrafficSpawner>().GetCars());
-        _crossroadTrafficController.SetListCarsAtCrossroad(_currentCarsAtCrossroad);
-        HighlightCurrentCar();
-    }
-
-    public void RemovePassedCrossroad()//DistanceMeter -> UnityEvent DroveCrossroad
-    {
-        _allCrossroad.RemoveAt(0);
-        _currentCarsAtCrossroad.Clear();       
-    }
+        RemovePassedCrossroad();//Первоочередно, старый перекресток удаляем из начала списка, и очищаем список машин от пройденных
+        _currentCarsAtCrossroad = new List<Car>(_allCrossroad[0].GetComponent<TrafficSpawner>().GetCars());
+        SetTruePriorities(_currentCarsAtCrossroad);
+        //_valueSignPlayer = _allCrossroad[0].GetComponent<TrafficSpawner>().GetValueSignPlayer();        
+        HighlightCurrentCar();        
+    }   
 
     public void GivePriority()
     {
@@ -51,6 +51,19 @@ public class PriorityIdentifier : MonoBehaviour
     {
         _currentCar.SetPriorityStatus(PriorityStatus.nonPriority);
         PromoteCarList();
+    }
+    //Задаем правильные(эталонные приоритеты)
+    private void SetTruePriorities(List<Car> currentCarsAtCrossroad)
+    {
+        List<Car> cars = new List<Car>(currentCarsAtCrossroad);        
+        cars.Add(_playerGeneration.GetPlayerCar());
+        _testListPrioritet = cars;
+    }
+    
+    private void RemovePassedCrossroad()
+    {
+        _allCrossroad.RemoveAt(0);
+        _currentCarsAtCrossroad.Clear();
     }
 
     private void HighlightCurrentCar()

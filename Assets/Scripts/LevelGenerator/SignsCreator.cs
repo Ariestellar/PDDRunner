@@ -9,7 +9,7 @@ public class SignsCreator : MonoBehaviour
 {
     [SerializeField] private GameObject _templateSign;    
     [SerializeField] private List<SignPriorityWay> _possibleRoadSign;
-    [SerializeField] private List<SignsPlacementVariants> _variantsArrangementSigns;//Пока реализованна генерация для 4ех стороннего перекрестка _signsArrangement_variantsArrangementSigns 
+    [SerializeField] private List<SignsPlacementVariants> _variantsArrangementSigns;
 
     private List<Sign> _varietiesSigns;
 
@@ -26,12 +26,12 @@ public class SignsCreator : MonoBehaviour
             for (int i = 0; i < positionSigns.Count; i++)
             {
                 GameObject currentSign = Instantiate(_templateSign, positionSigns[i]);
-                currentSign.GetComponent<SignDisplay>().Init(GetValueSign(arrangementValuesSigns[i]));
+                currentSign.GetComponent<SignDisplay>().Init(GetValueSign(arrangementValuesSigns[i]));                
             }
         }
         return arrangementValuesSigns;
     }
-
+    
     private Sign GetValueSign(SignPriorityWay signPriorityWay)
     {
         Sign sign = null;

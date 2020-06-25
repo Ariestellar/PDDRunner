@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63d14332bb62f1458a26a23f6fcac6a, type: 3}
   m_Name: MinorLeftTurn
   m_EditorClassIdentifier: 
-  _signPriorityWay: 6
+  _signPriorityWay: 3
   _signLabel: {fileID: 21300000, guid: 0a7dcbf324b73874d90946e2d32d57af, type: 3}
   _signPriorityLabel: {fileID: 21300000, guid: e9337541a2898cb42a8f6a9df7c29272, type: 3}

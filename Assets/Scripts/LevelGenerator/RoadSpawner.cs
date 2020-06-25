@@ -11,16 +11,10 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField] private GameObject _startBlock;    
     [SerializeField] private List<GameObject> _currentPartsRoads;
 
-    private int _roadsCount = 4;
     private float _roadLength = 50;
 
     public List<GameObject> CurrentPartsRoads => _currentPartsRoads;
-        
-    private void Start()
-    {  
-        StartSpawnRoad();        
-    }
-
+    
     public Transform GetLastPartRoad()
     {
         return CurrentPartsRoads[CurrentPartsRoads.Count - 1].transform;
@@ -46,11 +40,5 @@ public class RoadSpawner : MonoBehaviour
     {
         Destroy(CurrentPartsRoads[0]);
         CurrentPartsRoads.RemoveAt(0);
-    }
-
-    private void StartSpawnRoad()
-    {
-        for (int i = 0; i < _roadsCount; i++)
-            SpawnPartRoad();
     }
 }
