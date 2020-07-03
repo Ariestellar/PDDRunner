@@ -28,7 +28,7 @@ public class TrafficSpawner : MonoBehaviour
         SetValueSignsToSpawnPointsCars(_signs, _pointSpawnCars);
         _cars = _carCreator.Create(_pointSpawnCars);
 
-        _movementTraffic.Go(_cars); //пока запускаю здесь для тестовой сцены потом перенести в событие, когда машина игрока достигает перекрестка
+        //_movementTraffic.Go(_cars); //пока запускаю здесь для тестовой сцены потом перенести в событие, когда машина игрока достигает перекрестка
     }
 
     public List<Car> GetCars()
